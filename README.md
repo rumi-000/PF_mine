@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#サイト名
+  -家族構成から考える防災対策
+#サイト概要
+  -防災対策グッズの紹介、家族構成からのグッズ検索
+#サイトテーマ：何を目的としているのか、どのような分類のサイトなのか(SNS, コミュニティサイト, レビューサイト)
+  -目的、防災グッズの投稿、その投稿へのコメントといいね機能、またタグを使用して家族構成から見たグッズを探すことができる。
+#テーマを選んだ理由：なぜこのテーマにしたか、他の似たようなサービスとの違いなど
+  -地震や水害など、常に災害の危険はあり、防災グッズへの関心は定期的に高くなる。様々な人に触れるコミニュティサイトを作り、関心を持って災害対策に役立ててほしいと考えたから。
+  -前職では海外引越をされるお客様のご自宅へ車やスタッフを派遣する仕事をしていた。その中で家族構成により扱う荷物が大きく左右されることが判明した。同じ視点で、災害時の防災対策も家族構成によって大きく変わるのではないかと考えた。
+  今回は特にタグを使用して、『高齢者がいる家庭』『ペットがいる家庭』等、家族構からグッズを検索できる機能の作成を予定している。
+#ターゲットユーザー：誰に使ってもらうか
+  -幅広い世代の男女
+#主な利用シーン：どのような時に使うのか
+  -防災グッズを調べたい時
+  
+  

@@ -1,0 +1,12 @@
+
+<p>防災グッズ詳細</p>
+<%= form_with model:@post, url:post_path do |f| %>
+
+  <div class="form-group">
+    <%= f.label:item_name , 'グッズ名' %>
+  </div>
+  <div class="form-group">
+    <%= f.label:item_description , 'グッズ説明' %>
+  </div>
+  
+<% end %>

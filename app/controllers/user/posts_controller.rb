@@ -21,8 +21,11 @@ class User::PostsController < ApplicationController
 private
 
  def post_params
-  #params.require(:post).permit(:tag_id, :item_name, :item_description )
-  params.permit(:tag_id, :item_name, :item_description)
+  #params.require(:post).permit(:item_name, :item_description )
+  params.permit(:item_name, :item_description)
+  #params.permit(:tag_id, :item_name, :item_description)
  end
   
 end
+
+

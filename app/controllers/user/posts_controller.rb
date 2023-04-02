@@ -5,10 +5,15 @@ class User::PostsController < ApplicationController
  def new
  end
   
- def create
   #postの新規投稿
+ def create
   @post = Post.new(post_params)
-  @post.save ? (redirect_to post_path(@post.id)) : (render :new)
+  if @post.save
+   redirect_to admin_item_path(@item)
+  else
+   render :new
+  #@post.save ? (redirect_to post_path(@post.id)) : (render :new)
+  end
  end
   
  def show
@@ -21,11 +26,10 @@ class User::PostsController < ApplicationController
 private
 
  def post_params
-  #params.require(:post).permit(:item_name, :item_description )
-  params.permit(:item_name, :item_description)
-  #params.permit(:tag_id, :item_name, :item_description)
+  params.require(:post).permit(:item_name, :item_description)
  end
+  #params.permit(:item_name, :item_description)
+  #params.require(:post).permit(:item_name, :item_description )
+  #↑実装すると画面から消える。メンターにきく
   
 end
-
-

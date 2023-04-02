@@ -3,16 +3,16 @@ class User::PostsController < ApplicationController
 #メンターにきく
   
  def new
+  @post = Post.new
  end
-  
+ 
   #postの新規投稿
  def create
   @post = Post.new(post_params)
   if @post.save
-   redirect_to admin_item_path(@item)
+   redirect_to post_path(@item)
   else
-   render :new
-  #@post.save ? (redirect_to post_path(@post.id)) : (render :new)
+   render :index
   end
  end
   
@@ -21,12 +21,14 @@ class User::PostsController < ApplicationController
  end
 
  def index
+  @posts = Post.all
  end
   
 private
 
  def post_params
   params.require(:post).permit(:item_name, :item_description)
+  #params.require(:post).permit(:item_name, :item_description )
  end
   #params.permit(:item_name, :item_description)
   #params.require(:post).permit(:item_name, :item_description )

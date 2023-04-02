@@ -1,12 +1,23 @@
-
-<p>防災グッズ詳細</p>
-<%= form_with model:@post, url:post_path do |f| %>
-
-  <div class="form-group">
-    <%= f.label:item_name , 'グッズ名' %>
-  </div>
-  <div class="form-group">
-    <%= f.label:item_description , 'グッズ説明' %>
-  </div>
-  
-<% end %>
+<section class="inner">
+	<h2 class="section-ttl">防災グッズ詳細</h2>
+	<div class="flex">
+		</div>
+		<table class="item_info">
+			<thead>
+				<tr>
+					<th></th>	
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>商品名</td>
+					<td><%= @post.item_name %></td>
+				</tr>
+				<tr>
+					<td>商品説明</td>
+					<td><%= @post.item_description %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

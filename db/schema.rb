@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 2023_03_31_073653) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "tag_id"
     t.integer "item_name", null: false
     t.text "item_description", null: false
     t.datetime "created_at", precision: 6, null: false

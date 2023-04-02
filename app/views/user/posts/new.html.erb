@@ -1,6 +1,6 @@
 
 <p>防災グッズを投稿する</p>
-<%= form_with model:@post, url:posts_path do |f| %>
+<%= form_with model: @post, url: posts_path do |f| %>
 
   <div class="form-group">
     <%= f.label:item_name , 'グッズ名' %>
@@ -13,6 +13,7 @@
     <%= f.text_area :item_description %>
   </div>
   <div class="form-group">
-    <%= f.submit "Create post" ,class: 'btn btn-success' %>
+    <%= f.submit "投稿する"  %>
   </div>
 <% end %>
+

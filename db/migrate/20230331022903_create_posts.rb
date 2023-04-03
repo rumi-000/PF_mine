@@ -1,4 +1,5 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
+  
   def change
     create_table :posts do |t|
       #ここから記載
@@ -6,6 +7,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :item_name,      null:false
       t.text:item_description,   null:false
       #ここまで記載
+           #ユーザーidを入れる
+           #item_nameの修正
       t.timestamps
     end
   end

@@ -9,9 +9,10 @@ class User::PostsController < ApplicationController
   #postの新規投稿
  def create
   @post = Post.new(post_params)
-  if @post.save
-   redirect_to post_path(@item)
+  if @post.save!
+   redirect_to post_path(@post)
   else
+   @posts = Post.all
    render :index
   end
  end

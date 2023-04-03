@@ -20,10 +20,12 @@
   </tr>
  </thead>
 <tbody>
- <tr><% form_with @posts.each do |post| %>
-  <td><%= post.item_name %></td>
-  <td><%= post.item_description %></td>
-  <% end %></tr>
+ <tr>
+  <% @posts.each do |post| %>
+   <td><%= post.item_name %></td>
+   <td><%= post.item_description %></td>
+  <% end %>
+ </tr>
 </tbody>
 </table>
 </div>
@@ -33,4 +35,3 @@
 <div>
 <%= link_to 'new post',  new_post_path %>
 </div>
-

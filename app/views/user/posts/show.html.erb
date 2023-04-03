@@ -1,23 +1,8 @@
-<section class="inner">
-	<h2 class="section-ttl">防災グッズ詳細</h2>
-	<div class="flex">
-		</div>
-		<table class="item_info">
-			<thead>
-				<tr>
-					<th></th>	
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>商品名</td>
-					<td><%= @post.item_name %></td>
-				</tr>
-				<tr>
-					<td>商品説明</td>
-					<td><%= @post.item_description %></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+
+	<h2>防災グッズ詳細</h2>
+	
+						<p>商品名:<%= @post.item_name %></p>
+						<p></p>商品説明:<%= @post.item_description %></p>
+<div>
+<%= link_to '投稿一覧へ',  posts_path %>
+</div>

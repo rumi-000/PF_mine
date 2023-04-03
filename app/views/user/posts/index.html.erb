@@ -1,36 +1,23 @@
-<div class="container">
 
-<div class="row my-4">
- 
- <div class = "col-md-5">
-  <div class="row">
-    <div class="col-md-4 mx-2 mb-0 bg-light">
-    <h3>商品一覧</h3>
-    </div>
-   </div>
- </div>
+<h3>投稿一覧</h3>
 
 
-<div class="row my-5">
-<table class="table">
-<thead class="table-active">
+<table class="admin_items has_border">
+ <thead>
   <tr>
    <th>商品名</th>
    <th>商品説明</th>
   </tr>
  </thead>
 <tbody>
+ <% @posts.each do |post| %>
  <tr>
-  <% @posts.each do |post| %>
-   <td><%= post.item_name %></td>
+   <td><%= link_to post.item_name, post_path(post.id)  %></td>
    <td><%= post.item_description %></td>
   <% end %>
  </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
 
 <div>
 <%= link_to 'new post',  new_post_path %>

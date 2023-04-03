@@ -9,7 +9,8 @@ class User::PostsController < ApplicationController
   #postの新規投稿
  def create
   @post = Post.new(post_params)
-  if @post.save!
+  @post.user_id = current_user.id
+  if @post.save
    redirect_to post_path(@post)
   else
    @posts = Post.all
@@ -29,10 +30,9 @@ private
 
  def post_params
   params.require(:post).permit(:item_name, :item_description)
-  #params.require(:post).permit(:item_name, :item_description )
  end
-  #params.permit(:item_name, :item_description)
-  #params.require(:post).permit(:item_name, :item_description )
-  #↑実装すると画面から消える。メンターにきく
+
   
 end
+
+

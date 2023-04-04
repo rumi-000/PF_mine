@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  root :to => "user/homes#top"
+  get "about" => "user/homes#about", as: "about"
+  
   #管理者側　カリキュラム通りに記載している。
   #app/views/admin/shared/_links.html.erbでコメントアウトしてる。
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {

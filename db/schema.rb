@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_31_073653) do
+ActiveRecord::Schema.define(version: 2023_04_06_082007) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,10 +52,25 @@ ActiveRecord::Schema.define(version: 2023_03_31_073653) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "post_tag_relations", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_tag_relations_on_post_id"
+    t.index ["tag_id"], name: "index_post_tag_relations_on_tag_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "item_name", null: false
     t.text "item_description", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -74,4 +89,6 @@ ActiveRecord::Schema.define(version: 2023_03_31_073653) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_tag_relations", "posts"
+  add_foreign_key "post_tag_relations", "tags"
 end

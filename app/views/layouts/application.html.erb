@@ -47,11 +47,11 @@
         <!--サインイン時-->
          <% if user_signed_in? %>
           <li class="nav-item active m-0">
-            <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to "ユーザーLog out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <!--管理者サインイン時-->
          <% elsif admin_signed_in? %>
-            <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to "管理者Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
         <!--サインしていない時-->
          <% else %>
           <li class="nav-item active m-0">

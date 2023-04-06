@@ -8,8 +8,8 @@
 <% @posts.each do |post| %>
 <tr>
  <div class="card m-4" style="height:300px; width:400px;">
-   <!--<img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>-->
    <div class="card-body">
+    <%= image_tag post.image, size: "100x100" %>
     <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
     <p class="card-text">商品説明：<%= post.item_description %></p>
     <p class="card-text">♡件</p>

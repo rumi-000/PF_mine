@@ -8,16 +8,24 @@
 <%= form_with model: @post, url: posts_path do |f| %>
 
   <div class="form-group">
-    <%= f.label:item_name , 'グッズ名' %>
-    <%= f.text_field :item_name %>
+   <%= f.label:image , 'グッズ画像'  %>
+   <%= f.file_field :image, accept: "image/*" %>
   </div>
+  
   <div class="form-group">
-    <%= f.label:item_description , 'グッズ説明' %>
-    <%= f.text_area :item_description %>
+   <%= f.label:item_name , 'グッズ名' %>
+   <%= f.text_field :item_name %>
   </div>
+  
   <div class="form-group">
-    <%= f.submit "投稿する"  %>
+   <%= f.label:item_description , 'グッズ説明' %>
+   <%= f.text_area :item_description %>
   </div>
+  
+  <div class="form-group">
+   <%= f.submit "投稿する"  %>
+  </div>
+  
 <% end %>
 
 <div>

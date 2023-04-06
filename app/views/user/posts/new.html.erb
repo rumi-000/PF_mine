@@ -1,5 +1,10 @@
-
-<p>防災グッズを投稿する</p>
+<div class="container-fluid">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>防災グッズを投稿する</h2>
+ </div>
+ 
+ 
 <%= form_with model: @post, url: posts_path do |f| %>
 
   <div class="form-group">
@@ -18,3 +23,4 @@
 <div>
 <%= link_to '投稿一覧へ',  posts_path %>
 </div>
+

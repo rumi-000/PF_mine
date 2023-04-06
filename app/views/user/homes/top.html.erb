@@ -1,5 +1,25 @@
-<p>ようこそ</p>
+<!--画面いっぱいに横幅持って行きたい。いらなければ”-fluid”を消す。-->
+<div class="container-fluid">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>ようこそ</h2>
+ </div>
 
-<h4>初めて利用される方は<%= link_to "こちら", about_path %>をクリック</h4>
+ <div class="row justify-content-md-center">
+   
+  <div class="ml-1 col-md-4 bg-info">
+   <h4>初めて利用される方は
+       <br><%= link_to "こちら", about_path %>
+       <br>をクリック</h4>
+  </div>
+  <div class="col-md-2">
+   隙間
+  </div>
+  <div class="mr-1 col-md-4 bg-primary">
+   <h4>すでに会員登録済みの方は
+       <br><%= link_to "こちら", choice_path %>
+       <br>をクリック</h4>
+  </div>
+</div>
 
-<h4>すでに会員登録済みの方は<%= link_to "こちら", choice_path %>をクリック</h4>
+

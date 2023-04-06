@@ -1,9 +1,34 @@
-<h2>こんにちは！</h2>
+<div class="container-fluid">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>こんにちは！</h2>
+ </div>
 
+<div class="row justify-content-md-center">
+  
+<div class="col-3">  
+  <h4>商品の一覧は
+  <br><%= link_to "こちら", posts_path %>
+  <br>をクリック</h4>
+  </div>
+  
+<div class="col-3">  
+  <h4>防災グッズの投稿は
+  <br><%= link_to "こちら", new_post_path %>
+  <br>をクリック</h4>
+</div>
 
-<%= link_to "投稿の閲覧", posts_path %></td>
-<%= link_to "防災グッズの投稿", new_post_path %></td>
-<h4>防災グッズの検索</h4>
-<h4>あなたのマイページ</h4>
+<div class="col-3">  
+<h4>防災グッズの検索は
+  <br><%= link_to "未実装", new_post_path %>
+  <br>をクリック</h4>
+</div>
 
-<P>やること：投稿機能の整理 (編集と削除ページの追加)、タグ機能の作成、いいね、コメント機能の作成、レイアウトの決定、検索機能の追加、</P>
+<div class="col-3">  
+<h4>防災グッズの検索は
+  <br><%= link_to "未実装", new_post_path %>
+  <br>をクリック</h4>
+</div>
+
+</div>
+</div>

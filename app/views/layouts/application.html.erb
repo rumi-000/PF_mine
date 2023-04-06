@@ -11,23 +11,29 @@
   </head>
 
   <body>
-    <header class="<%= (user_signed_in? ? "user_header" : "" ) %>">
-      <div class="header-content">
-       <ul class="flex">
-       <% if admin_signed_in? %>
-        <li><%#= link_to '商品一覧',  admin_items_path %></li>
-        <li><%#= link_to '会員一覧',  admin_customers_path %></li>
-        <li><%#= link_to '注文履歴一覧',  admin_orders_path %></li>
-        <li><%#= link_to 'ジャンル一覧',  admin_genres_path %></li>
-        <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
-      <% elsif user_signed_in? %>
-        <li><%#= link_to 'マイページ', mypage_path %></li>
-        <li><%#= link_to '商品一覧', items_path %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-        <% end %>
-        </ul>
-         </div>
+    <header>
+     <nav class="navbar navbar-dark bg-dark">
+     <div class="container-fluid">
+  <!--ロゴ-->
+      <div class="row">
+      <!--(後で消す：ブランドのclassをこれで表記するらしい)-->
+       <a class="navbar-brand" href="#">
+       <img src="/assets/logo.png" alt="" width="80" height="90" class="rounded mx-auto d-block">
+       </a>
+      </div>
+  <!--サイト名-->
+      <div class="row text-white mr-5" style="font-size: 20px;">防災グッズサーチ</div>
+  <!--メニュー-->
+      <div class="row">
+      <!--ハンバーガーメニュー-->
+      <!--（後で消す：↓data-targetとaria-controlsは同じidにする必要がある)-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!--(後で消す:↓これでハンバーガーメニューの3本線を記入する)-->
+    　<span class="navbar-toggler-icon"></span>
+      </button>
+      </div>
     </header>
+  
     
     <main>
      <%= yield %>
@@ -36,3 +42,9 @@
   </body>
 </html>
 
+
+<!--勉強-->
+<!--imgは画像を表示するタグでした。src属性では表示する画像のパスを指定します
+また、alt属性では、何らかの理由で画像が表示できない場合に表示するテキストを指定します。-->
+<!--<img src="sample.gif" alt="サンプル" width="300" height="200">⇨そのままだとピクセル。%をつけることも可能-->
+<!--bootstrapとcss共存の例：<div class="mx-auto" style="width: 200px;">-->

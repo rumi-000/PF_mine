@@ -18,6 +18,7 @@
       <div class="row">
       <!--(後で消す：ブランドのclassをこれで表記するらしい)-->
        <a class="navbar-brand" href="#">
+      <!--(後で消す：サイズはそのままだとピクセル。%をつけることも可能.altタグは何らかの理由で画像が表示できない場合に表示するテキスト)-->
        <img src="/assets/logo.png" alt="" width="80" height="90" class="rounded mx-auto d-block">
        </a>
       </div>
@@ -25,12 +26,42 @@
       <div class="row text-white mr-5" style="font-size: 20px;">防災グッズサーチ</div>
   <!--メニュー-->
       <div class="row">
-      <!--ハンバーガーメニュー-->
+      <!--ハンバーガーメニューのアイコン-->
       <!--（後で消す：↓data-targetとaria-controlsは同じidにする必要がある)-->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <!--(後で消す:↓これでハンバーガーメニューの3本線を記入する)-->
-    　<span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
       </button>
+      
+      <!--ハンバーガーメニューの中身-->
+      <!--（後で消す：↓data-targetとaria-controlsはidと同様の数値にする必要がある)-->
+      <!--(後で消す：ul タグには navbar-nav クラス ,li タグには nav-item クラス を指定する,a タグには nav-link クラス を指定する)-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item active m-0">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active m-0">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+        <!--サインイン時-->
+         <% if user_signed_in? %>
+          <li class="nav-item active m-0">
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <!--管理者サインイン時-->
+         <% elsif admin_signed_in? %>
+            <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+        <!--サインしていない時-->
+         <% else %>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/users/sign_in">ログイン</a>
+          </li>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/users/sign_up">会員登録</a>
+          </li>
+         <% end %>
+        </ul>
       </div>
     </header>
   
@@ -38,13 +69,18 @@
     <main>
      <%= yield %>
     </main>
-   <footer>フッター</footer>
+    
+　　<footer class="bg-dark pt-5 pb-4 fixed-bottom">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
 
 <!--勉強-->
-<!--imgは画像を表示するタグでした。src属性では表示する画像のパスを指定します
-また、alt属性では、何らかの理由で画像が表示できない場合に表示するテキストを指定します。-->
-<!--<img src="sample.gif" alt="サンプル" width="300" height="200">⇨そのままだとピクセル。%をつけることも可能-->
-<!--bootstrapとcss共存の例：<div class="mx-auto" style="width: 200px;">-->
+<!--ハンバーガメニューの参考サイト：https://www.manajob.jp/bootstrap/bootstrap/bootstrap-navigation-->

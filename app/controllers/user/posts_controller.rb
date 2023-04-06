@@ -28,7 +28,7 @@ class User::PostsController < ApplicationController
  
  def update
   @post = Post.find(params[:id])
-  if @post.save
+  if @post.update(post_params)
   redirect_to post_path(@post)
   else
   @posts = Post.all
@@ -49,5 +49,4 @@ private
 
   
 end
-
 

@@ -1,14 +1,21 @@
 <div class="container-fluid">
   
  <div class="row mt-5 mb-5 offset-5">
-  <h2>防災グッズ詳細覧</h2>
+  <h2>防災グッズ詳細一覧</h2>
  </div>
  
 
-						<p>商品名:<%= @post.item_name %></p>
-						<p></p>商品説明:<%= @post.item_description %></p>
+<p>商品名:<%= @post.item_name %></p>
+<p>商品説明:<%= @post.item_description %></p>
+
+<div>
+<%= link_to '投稿編集へ',  edit_post_path %>
+</div>
+
 <div>
 <%= link_to '投稿一覧へ',  posts_path %>
 </div>
 
 
+
+</div>

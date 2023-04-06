@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>防災グッズを編集する</h2>
+ </div>
+ 
+ <%= form_with model: @post, url: edit_post_path do |f| %>
+ 
+  <div class="form-group">
+  <%= f.label:item_name , 'グッズ名' %>
+  <%= f.text_field :item_name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label:item_description , 'グッズ説明' %>
+    <%= f.text_area :item_description %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "編集する"  %>
+  </div>
+<% end %>
+
+<div>
+<%= link_to '投稿一覧へ',  posts_path %>
+</div>
+
+</div>

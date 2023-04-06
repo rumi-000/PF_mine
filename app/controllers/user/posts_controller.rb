@@ -28,7 +28,14 @@ class User::PostsController < ApplicationController
  
  def update
   @post = Post.find(params[:id])
+  if @post.save
+  redirect_to post_path(@post)
+  else
+  @posts = Post.all
+  render :index
+  end
  end
+ 
  
  def index
   @posts = Post.all

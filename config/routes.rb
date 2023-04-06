@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   }
   
 
+  namespace :admin do
+  resources :tags, only: [:index, :new, :create, :destroy]
+  end
+  
   #ユーザー側 カリキュラム通りに記載している。
   #app/views/user/shared/_links.html.erbでコメントアウトしてる。
   devise_for :users, skip: [:passwords], controllers: {
@@ -26,5 +30,4 @@ end
   
 
 end
-
 

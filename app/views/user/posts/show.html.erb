@@ -7,6 +7,7 @@
 <p>グッズ画像：<%= image_tag @post.image, size: "100x100" %></p>
 <p>商品名:<%= @post.item_name %></p>
 <p>商品説明:<%= @post.item_description %></p>
+<p>タグ:<%= @post.tags.name %></p>
 
 <div>
 <%= link_to '投稿編集へ',  edit_post_path %>

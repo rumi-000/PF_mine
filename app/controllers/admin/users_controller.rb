@@ -6,7 +6,7 @@ end
 
 def show
  @user = User.find(params[:id])
- @post = Post.all
+ @post = @user.posts
 end
 
 end

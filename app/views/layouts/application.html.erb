@@ -24,6 +24,10 @@
       </div>
   <!--サイト名-->
       <div class="row text-white mr-5" style="font-size: 20px;">防災グッズサーチ</div>
+  <!--ウェルカムメッセージ-->
+      <% if user_signed_in? %>
+      <h6 class="text-center my-0 text-white">ようこそ、<%= current_user.name %>さん！</h6>
+      <% end %>
   <!--メニュー-->
       <div class="row">
       <!--ハンバーガーメニューのアイコン-->
@@ -63,6 +67,7 @@
          <% end %>
         </ul>
       </div>
+
     </header>
   
     

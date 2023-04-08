@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>会員一覧</h2>
+ </div>
+ 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= link_to user.id, admin_user_path(user.id) %></td>
+      <td><%= user.name %></td>
+      <td>a</td>
+    </tr>
+  <% end %> 
+  </tbody>
+</table>
+

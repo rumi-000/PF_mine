@@ -24,8 +24,8 @@ Rails.application.routes.draw do
   }
   
   scope module: 'user' do
+  resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:new, :create, :show, :index, :edit, :update]
-  #new,create,show
 end
   
 

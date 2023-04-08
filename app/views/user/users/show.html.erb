@@ -1,0 +1,30 @@
+<div class="container-fluid" style="height:900px;">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>マイページ</h2>
+ </div>
+ 
+<p>名前:<%= @user.name %></p>
+<p>自己紹介(未実装):<%#= @post.item_description %></p>
+
+<p>投稿一覧</p>
+ <div class="row mr-10">
+<% @post.each do |post| %>
+<tr>
+ <div class="card m-4" style="height:450px; width:400px;">
+   <div class="card-body">
+    <%= image_tag post.image, size: "100x100" %>
+    <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
+    <p class="card-text">商品説明：<%= post.item_description %></p>
+    <p class="card-text">♡件</p>
+    <p class="card-text">コメント件数</p>
+    <p class="card-text">タグ:<%= post.tags.name %></p>
+   </div>
+ </div>
+  <% end %>
+ </tr>
+ </div>
+ 
+ <%= link_to "戻る" , choice_path %>
+ 
+</div>

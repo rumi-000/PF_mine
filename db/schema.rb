@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2023_04_06_082007) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "tag_id"
     t.integer "user_id", null: false
     t.text "item_name", null: false
     t.text "item_description", null: false

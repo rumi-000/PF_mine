@@ -22,6 +22,12 @@
    <%= f.text_area :item_description %>
   </div>
   
+  
+  <div class="form-group">
+   <%= f.label:tag_id , 'タグ'%>
+   <%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :name),{},{class: 'col-md-4'} %>
+  </div>
+    
   <div class="form-group">
    <%= f.submit "投稿する"  %>
   </div>
@@ -34,8 +40,3 @@
 
 
 
- <!--<div class="form-group row">-->
-    <!--<label for="genre_id" class="col-md-3 col-form-label">ジャンル</label>-->
-    <!--<div class="col-md-9">-->
-    <!--<%#= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),{},{class: 'col-md-6'} %>-->
-    <!--</div>-->

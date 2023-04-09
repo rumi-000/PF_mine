@@ -8,6 +8,20 @@
 <p>商品名:<%= @post.item_name %></p>
 <p>商品説明:<%= @post.item_description %></p>
 <p>タグ:<%= @post.tags.name %></p>
+<!--いいね機能-->
+ <% if @post.favorited_by?(current_user) %>
+  <p>
+   <%= link_to post_favorites_path(@post), method: :delete do %>
+    <span style="color:red;">❤︎</span>
+   <% end %>
+  </p>
+   <% else %>
+  <p>
+   <%= link_to post_favorites_path(@post), method: :post do %>
+    <span>︎いいねをする</span>
+   <% end %>
+   </p>
+ <% end %>
 
 <div>
 <%= link_to '投稿編集へ',  edit_post_path %>
@@ -17,7 +31,4 @@
 <%= link_to '投稿一覧へ',  posts_path %>
 </div>
 
-
-
 </div>
-

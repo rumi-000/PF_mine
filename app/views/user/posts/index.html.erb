@@ -12,7 +12,7 @@
     <%= image_tag post.image, size: "100x100" %>
     <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
     <p class="card-text">商品説明：<%= post.item_description %></p>
-    <p class="card-text">♡件</p>
+    <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
     <p class="card-text">コメント件数</p>
     <p class="card-text">タグ:<%= post.tags.name %></p>
     <p class="card-text">投稿者:<%= post.user.name %></p>

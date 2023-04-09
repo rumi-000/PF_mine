@@ -22,5 +22,8 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   
+  #コメント機能
+  has_many :post_comments, dependent: :destroy
+  
 end
 

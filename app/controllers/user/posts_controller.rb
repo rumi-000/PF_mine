@@ -20,6 +20,8 @@ class User::PostsController < ApplicationController
   
  def show
   @post = Post.find(params[:id])
+  #コメント機能の記述
+  @post_comment = PostComment.new
  end
 
  def edit

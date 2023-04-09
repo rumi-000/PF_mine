@@ -1,9 +1,8 @@
 class Tag < ApplicationRecord
   
-  # 以下を追記
-  #Tagsテーブルから中間テーブルに対する関連付け
-  has_many :post_tag_relations, dependent: :destroy
-  #Tagsテーブルから中間テーブルを介してArticleテーブルへの関連付け
-  has_many :posts, through: :post_tag_relations, dependent: :destroy
-  
+  has_many :post_tag_relations,dependent: :destroy, foreign_key: 'tag_id'
+  # タグは複数の投稿を持つ　それは、post_tagsを通じて参照できる
+  has_many :posts,through: :post_tag_relations
+
+  validates :name, uniqueness: true, presence: true
 end

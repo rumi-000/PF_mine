@@ -4,24 +4,31 @@ class User::PostsController < ApplicationController
   @post = Post.new
  end
  
-  #postの新規投稿
+ 
  def create
   @post = Post.new(post_params)
   @post.user_id = current_user.id
+  #タグの追加
+  tag_list=params[:post][:name]
   if @post.save
+     @post.save_tag(tag_list)
    redirect_to post_path(@post)
   else
    @posts = Post.all
    render :index
   end
  end
-  
+
+
  def show
   @post = Post.find(params[:id])
   #コメント機能の記述
   @post_comment = PostComment.new
+  #タグ機能の記述
+  @post_tags = @post.tags
  end
-
+ 
+ 
  def edit
   @post = Post.find(params[:id])
  end
@@ -39,6 +46,7 @@ class User::PostsController < ApplicationController
  
  def index
   @posts = Post.all
+  @tag_list=Tag.all
  end
  
  def search
@@ -53,7 +61,7 @@ class User::PostsController < ApplicationController
  private
 
  def post_params
-  params.require(:post).permit(:item_name, :item_description, :image, :tag_id)
+  params.require(:post).permit(:item_name, :item_description, :image)
  end
 
 

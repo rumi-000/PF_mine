@@ -1,9 +1,15 @@
 <div class="container-fluid" style="height:900px;">
   
  <div class="row mt-5 mb-5 offset-5">
-  <h2>投稿一覧</h2>
- </div>
+  <div class="col-auto">
+   <h2>投稿一覧</h2>
+  </div>
  
+  <div class="col-auto">
+   <h4>検索は<%= link_to "こちら" , search_path %>からご利用ができます。</h4>
+  </div>
+  </div>
+
 <div class="row mr-10">
 <% @posts.each do |post| %>
 <tr>

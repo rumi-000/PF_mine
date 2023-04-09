@@ -43,6 +43,9 @@ class User::PostsController < ApplicationController
   @posts = Post.all
  end
   
+ def search
+ end
+ 
 private
 
  def post_params

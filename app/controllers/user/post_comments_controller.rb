@@ -1,5 +1,6 @@
 class User::PostCommentsController < ApplicationController
-  
+ before_action:search_post, only: [:search]
+ 
  def create
    post = Post.find(params[:post_id])
    comment = current_user.post_comments.new(post_comment_params)
@@ -20,4 +21,3 @@ class User::PostCommentsController < ApplicationController
  end
 
 end
-

@@ -1,7 +1,5 @@
 class User::PostsController < ApplicationController
-#before_action :ensure_item, only: [:show, :edit, :update]
-#メンターにきく
-  
+
  def new
   @post = Post.new
  end
@@ -42,16 +40,22 @@ class User::PostsController < ApplicationController
  def index
   @posts = Post.all
  end
-  
- def search
- end
  
-private
+ def search
+  if params[:item_name].present?
+     @posts = Post.where('item_name LIKE ?', "%#{params[:item_name]}%")
+  else
+     @posts = Post.none
+  end
+ end
+
+ 
+ private
 
  def post_params
   params.require(:post).permit(:item_name, :item_description, :image, :tag_id)
  end
 
-  
+
 end
 

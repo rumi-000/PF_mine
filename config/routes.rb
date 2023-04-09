@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "about" => "user/homes#about", as: "about"
   get "choice" => "user/homes#choice", as: "choice"
   get "admin" => "admin/homes#top", as: "admin"
+  get "search" => "user/posts#search", as: "search"
   
   #管理者側 カリキュラム通りに記載している。
   #app/views/admin/shared/_links.html.erbでコメントアウトしてる。
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:new, :create, :show, :index, :edit, :update] do
    resource :favorites, only: [:create, :destroy]
+  resources :post_comments, only: [:create, :destroy]
    end
   end
   

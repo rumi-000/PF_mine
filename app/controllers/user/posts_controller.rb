@@ -11,8 +11,8 @@ class User::PostsController < ApplicationController
   #タグの追加
   tag_list=params[:post][:name]
   if @post.save
-     @post.save_tag(tag_list)
-   redirect_to post_path(@post)
+     @post.save_tag(tag_list)#タグ
+   redirect_to post_path(@post)#タグ
   else
    @posts = Post.all
    render :index
@@ -21,6 +21,7 @@ class User::PostsController < ApplicationController
 
 
  def show
+  @tag_list=Tag.all
   @post = Post.find(params[:id])
   #コメント機能の記述
   @post_comment = PostComment.new
@@ -66,4 +67,6 @@ class User::PostsController < ApplicationController
 
 
 end
+
+
 

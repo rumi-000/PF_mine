@@ -21,12 +21,18 @@
    <%= f.label:item_description , 'グッズ説明' %>
    <%= f.text_area :item_description %>
   </div>
-  
- <div class="form-group">
-    <label for="tag_id" class="col-md-3 col-form-label">タグ</label>
-    <div class="col-md-9">
-    <%= f.select :tag_id, options_from_collection_for_select(Tag.all, :id, :name),{},{class: 'col-md-2'} %>
-    </div>
+
+<!--タグ-->
+  <div class="form-group ml-5">
+   <%= f.label:name , 'タグ' %>
+    <% @tag.each do |tag| %>
+  <br>
+   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+   <label class="form-check-label" for="flexCheckDefault">
+    <%= tag.name %>
+   </label>
+  </br>
+    <% end %>
   </div>
     
   <div class="form-group">
@@ -38,5 +44,3 @@
 <div>
 <%= link_to '投稿一覧へ',  posts_path %>
 </div>
-
-

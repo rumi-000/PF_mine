@@ -23,8 +23,8 @@ class Admin::TagsController < ApplicationController
   end
 
  def destroy
-   tag = Tag.find(params[:id])
-   if tag.destroy
+   @tag = Tag.find(params[:id])
+   if @tag.destroy
    flash[:notice] = "タグは削除されました."
    redirect_to admin_tags_path
    else
@@ -40,5 +40,3 @@ def tag_params
 end
 
 end
-
-

@@ -10,6 +10,9 @@ class User::PostsController < ApplicationController
   @post = Post.new(post_params)
   @post.user_id = current_user.id
   if @post.save
+    params[:post][:tag_ids].each do |tag|
+     @post.post_tags.create!(tag_id: tag)
+    end
      redirect_to post_path(@post)
   else
    @posts = Post.all

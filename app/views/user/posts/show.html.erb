@@ -68,8 +68,17 @@
  </div>
  </div>
  </div>
+ 
+  <!--投稿の削除-->
+  <% if @user== current_user %>
+  <div class="row align-items-start ml-5 mr-5">
+   <%= link_to '投稿を削除する', post_path(@post.id), method: :delete,  data: { confirm: '本当に消しますか？' } %>
+  </div>
+  <% end %>
+ 
+ </div>
 
-<div class="row align-items-start ml-5 mr-5">
+<div class="row align-items-start ml-5 mr-5 mt-5">
  <div class="col-auto">
   <%= link_to '投稿編集へ',  edit_post_path %>
  </div>
@@ -82,5 +91,4 @@
 
 </div>
 </div>
-
 

@@ -22,6 +22,7 @@ class User::PostsController < ApplicationController
   #コメント機能の記述
   @post_comment = PostComment.new
   @post_tags = @post.tags
+  @user = @post.user
  end
  
 
@@ -44,6 +45,18 @@ class User::PostsController < ApplicationController
  def index
   @posts = Post.all
  end
+ 
+ def destroy
+  @post = Post.find(params[:id])
+  if @post.destroy
+  flash[:notice] = "投稿は削除されました."
+  redirect_to posts_path
+  else
+  posts = Post.all
+  render 'index'
+  end
+ end
+ 
  
  def search
   if params[:item_name].present?

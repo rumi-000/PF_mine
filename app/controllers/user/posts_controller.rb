@@ -13,7 +13,6 @@ class User::PostsController < ApplicationController
      redirect_to post_path(@post)
   else
    @posts = Post.all
-   @post.save_tag(tag_list)
    render :index
   end
  end

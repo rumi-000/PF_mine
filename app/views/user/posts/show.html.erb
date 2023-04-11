@@ -9,9 +9,10 @@
   <p>グッズ画像：<%= image_tag @post.image, size: "100x100" %></p>
   <p>商品名:<%= @post.item_name %></p>
   <p>商品説明:<%= @post.item_description %></p>
-  <p><% @post_tags.each do |tag| %>
-  <%=tag.name%><%="(#{tag.posts.count})" %><% end %></i>
-  </p>
+  <p>タグ:<% @post.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+          <% end %>
+</p>
 
   <!--いいね機能-->
   <% if @post.favorited_by?(current_user) %>

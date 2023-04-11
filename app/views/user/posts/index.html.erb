@@ -25,7 +25,9 @@
     <p class="card-text">商品説明：<%= post.item_description %></p>
     <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
     <p class="card-text">コメント件数</p>
-    <p class="card-text">タグ:<%= tagname %></p>
+    <p class="card-text">タグ:<% post.tags.each do |tag| %>
+    　　　　　　　　　　　　　　　　　　　　　　　　　　<span><%= tag.name %></span>
+          　　　　　　　　　　　　　　　　　　　<% end %></p>
     <p class="card-text">投稿者:<%= post.user.name %></p>
    </div>
  </div>

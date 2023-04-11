@@ -1,4 +1,5 @@
 class User::UsersController < ApplicationController
+ before_action :authenticate_user!
   
 def show
  @user = User.find(current_user.id)
@@ -17,11 +18,5 @@ end
       render :edit
     end
  end
-  
-  #private
-
-  #def customer_params
-    #params.require(:user).permit(:name)
-  #end
   
 end

@@ -1,0 +1,30 @@
+<div class="container-fluid" style="height:900px;">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>自分の編集</h2>
+ </div>
+ 
+ <div class="row">
+ <%= form_with model: @user, url: user_path(@user) do |f| %>
+ 
+  <div class="form-group">
+  <%= f.label:name , '名前の変更はできません。' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label:introduction , '自己紹介' %>
+    <%= f.text_area :introduction %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "編集する"  %>
+  </div>
+<% end %>
+</div>
+
+<div>
+<%= link_to '投稿一覧へ',  posts_path %>
+</div>
+
+</div>
+

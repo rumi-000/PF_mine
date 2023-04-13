@@ -5,7 +5,7 @@
  </div>
  
 <p>名前:<%= @user.name %></p>
-<p>自己紹介(未実装):<%#= @post.item_description %></p>
+<p>自己紹介:<%= @user.introduction %></p>
 
 <p>投稿一覧</p>
  <div class="row mr-10">
@@ -17,7 +17,7 @@
     <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
     <p class="card-text">商品説明：<%= post.item_description %></p>
     <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
-    <p class="card-text">コメント件数</p>
+    <p class="card-text">コメント件数:<%= post.post_comments.count %>件</p>
     <p class="card-text">タグ:<%= post.tags.name %></p>
    </div>
  </div>
@@ -25,6 +25,12 @@
  </tr>
  </div>
  
+  <% if @user == current_user %>
+  <div class="row align-items-start ml-5 mr-5">
+   <%= link_to"編集する", edit_user_path(@user.id)  %>
+  </div>
+  <% end %>
+
  <%= link_to "戻る" , choice_path %>
  
 </div>

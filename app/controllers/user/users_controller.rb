@@ -12,11 +12,17 @@ end
  
  def update
    @user = User.find(current_user.id)
-    if @user.update(current_user.id)
-      #redirect_to user_path, notice: "You have updated customer successfully."
+    if @user.update(user_params)
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
  end
-  
+
+private
+
+def user_params
+ params.require(:user).permit(:introduction)
+end
+
 end

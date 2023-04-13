@@ -38,11 +38,11 @@
     <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
     <p class="card-text">商品説明：<%= post.item_description %></p>
     <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
-    <p class="card-text">コメント件数</p>
+    <p class="card-text">コメント件数:<%= post.post_comments.count %>件</p>
     <p class="card-text">タグ:<% post.tags.each do |tag| %>
                               <%= tag.name %>
           　　　　　　　　　　　　　　　　　　　<% end %></p>
-    <p class="card-text">投稿者:<%= post.user.name %></p>
+    <p class="card-text">投稿者:<%= link_to post.user.name, user_path(post.user_id)%></p>
    </div>
  </div>
   <% end %>
@@ -57,7 +57,7 @@
   <% end %>
  </div>
  
- <div class ="row ml-5">
+ <div class ="row ml-10">
   <%=link_to "戻る", choice_path %>
  </div>
 </div>

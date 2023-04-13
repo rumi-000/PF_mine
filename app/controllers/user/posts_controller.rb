@@ -47,6 +47,7 @@ class User::PostsController < ApplicationController
  
  def index
   @posts = Post.all
+  @message = "何も投稿されていません。投稿してみましょう！" if @posts.empty?
  end
  
  def destroy

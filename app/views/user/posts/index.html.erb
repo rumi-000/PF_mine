@@ -10,13 +10,27 @@
   </div>
   </div>
 
+<!--投稿が一件もないとき-->
+　<!--投稿メッセージ-->
+ <% if @posts.empty? %>
+  <div class ="row ml-5">
+   <p><%= @message %></p>
+  </div>
+  <!--新規投稿リンク-->
+ <div class ="row ml-5">
+ <div class="card m-4" style="height:300px; width:400px;">
+  <div class="card-body">
+   <h5 class="card-title">投稿する</h5>
+   <p class="card-text"></p>
+   <a href="/posts/new" class="btn btn-primary">クリック</a>
+  </div>
+ </div>
+ </div>
+ 
+<% else %>
+<!--投稿があるとき-->
 <div class="row mr-10">
-<% @posts.each do |post| %>
-
-<% tags = post.tags %>
-<%# tagname =  tags.map[ |tag| tag["name"]].join(",") %>
-
-
+ <% @posts.each do |post| %>
 <tr>
  <div class="card m-4" style="height:400px; width:400px;">
    <div class="card-body">
@@ -26,7 +40,7 @@
     <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
     <p class="card-text">コメント件数</p>
     <p class="card-text">タグ:<% post.tags.each do |tag| %>
-    　　　　　　　　　　　　　　　　　　　　　　　　　　<span><%= tag.name %></span>
+                              <%= tag.name %>
           　　　　　　　　　　　　　　　　　　　<% end %></p>
     <p class="card-text">投稿者:<%= post.user.name %></p>
    </div>
@@ -40,6 +54,11 @@
   </div>
  </div>
  </tr>
+  <% end %>
+ </div>
+ 
+ <div class ="row ml-5">
+  <%=link_to "戻る", choice_path %>
  </div>
 </div>
  

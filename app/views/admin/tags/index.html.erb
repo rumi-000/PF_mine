@@ -29,7 +29,7 @@
    <% @tags.each do |tag| %>
    <tr>
     <td class="text-center"><%= tag.name %></td>
-    <td class="text-center"><%= link_to '編集する(未実装)', admin_path %></td>
+    <td class="text-center"><%= link_to '編集する', edit_admin_tag_path(tag.id) %></td>
     <td class="text-center"><%= link_to '削除する', admin_tag_path(tag.id), method: :delete,  data: { confirm: '本当に消しますか？' } %></td>
     </tr>
     <% end %>

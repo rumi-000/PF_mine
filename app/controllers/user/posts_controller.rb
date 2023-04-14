@@ -61,7 +61,8 @@ class User::PostsController < ApplicationController
   end
  end
  
- 
+ # 投稿の検索メソッド
+ #searchコントローラーの実装で消す。一旦残してるだけ。
  def search
   if params[:item_name].present?
      @posts = Post.where('item_name LIKE ?', "%#{params[:item_name]}%")

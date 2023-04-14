@@ -77,11 +77,13 @@
   <% end %>
  
  </div>
-
+<!--投稿の編集-->
+<% if @user == current_user %>
 <div class="row align-items-start ml-5 mr-5 mt-5">
  <div class="col-auto">
   <%= link_to '投稿編集へ',  edit_post_path %>
  </div>
+ <% end %>
 
 <div class="col-auto">
  <div class="row align-items-start ml-5 mr-5">
@@ -91,4 +93,5 @@
 
 </div>
 </div>
+
 

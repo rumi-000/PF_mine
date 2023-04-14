@@ -45,6 +45,7 @@ class Admin::TagsController < ApplicationController
   end
  end
  
+
 private
 
 def tag_params

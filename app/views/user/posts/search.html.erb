@@ -7,7 +7,7 @@
  <!--キーワード検索-->
  <div class="row">
    <div class = "col-auto">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <<%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.label :item_name, '投稿内容' %>
     <%= f.search_field :item_name %>
    </div>
@@ -42,3 +42,4 @@
 </div>
  
 </div>
+

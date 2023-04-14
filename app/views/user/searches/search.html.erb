@@ -1,0 +1,55 @@
+<div class="container-fluid" style="height:900px;">
+  
+ <div class="row mt-5 mb-5 offset-5">
+  <h2>検索フォーム</h2>
+ </div>
+
+　<div class = "row">
+　 <div class = "row-auto">
+    <h7>検索には、投稿名(グッズ名)、タグからの検索が可能です。</h7>
+
+   <div class = "col mt-3">
+    <%= form_tag search_path, method: :get do %>
+    <%= text_field_tag :q, params[:q] %>
+   </div>
+   
+   <div class = "col mt-1">
+    <%= submit_tag '検索', class: "btn btn-primary" %>
+    <% end %>
+   </div>
+  </div>
+ </div>
+
+<!--キーワード検索結果-->
+<div class ="row mt-5 ml-2">
+ <h5>検索結果</h5>
+</div>
+
+<div class="row mr-10">
+ <% @posts.each do |post| %>
+ <tr>
+  <div class="card m-4" style="height:500px; width:400px;">
+    <div class="card-body">
+     <%= image_tag post.image, size: "100x100" %>
+     <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
+     <p class="card-text">商品説明：<%= post.item_description %></p>
+     <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
+     <p class="card-text">コメント件数：<%= post.post_comments.count %></p>
+     <p class="card-text">タグ:<% post.tags.each do |tag| %>
+      <span><%= tag.name %></span>
+            <% end %>
+     <p class="card-text">投稿者:<%= link_to post.user.name, user_path(post.user_id)%></p>
+    </div>
+  </div>
+ </tr>
+ <% end %>
+</div>
+ 
+ <div class="row mt-5 mb-5 offset-5">
+  <%= link_to "戻る", choice_path %>
+ </div>
+ 
+</div>
+
+
+

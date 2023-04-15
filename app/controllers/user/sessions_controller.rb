@@ -33,7 +33,7 @@ protected
 def user_state
  @user = User.find_by(email: params[:user][:email])
   if @user
-   if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+   if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true )
     flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
    redirect_to new_customer_session_path
    end

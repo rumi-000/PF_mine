@@ -7,21 +7,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">会員No.</th>
+      <th scope="col">名前</th>
+      <th scope="col">会員ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @users.each do |user| %>
     <tr>
-      <th scope="row">1</th>
       <td><%= link_to user.id, admin_user_path(user.id) %></td>
       <td><%= user.name %></td>
-      <td>a</td>
+      <td><% if user.is_deleted? %>
+       <span class="text-active">退会</span>	
+      <% else %>
+       <span class="text-invalid">有効</span>
+      <% end %>
+      </td>
     </tr>
   <% end %> 
   </tbody>
 </table>
-

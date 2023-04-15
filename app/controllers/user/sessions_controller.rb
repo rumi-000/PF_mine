@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
+ before_action :user_state, only: [:create]
+ 
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -25,19 +27,17 @@ class User::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  protected
+protected
 
-  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
-  def reject_user
-  @user = User.find_by(name: params[:user][:name])
-   if @user 
-    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
-    flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-     redirect_to new_user_registration
-    else
-     flash[:notice] = "項目を入力してください"
-    end
+# 退会しているかを判断するメソッド
+def user_state
+ @user = User.find_by(email: params[:user][:email])
+  if @user
+   if @user.valid_password?(params[:user][:password]) && @user.is_deleted
+    flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+   redirect_to new_customer_session_path
    end
   end
 end
 
+end

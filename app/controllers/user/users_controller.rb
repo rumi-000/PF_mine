@@ -8,7 +8,7 @@ class User::UsersController < ApplicationController
  
  
 def show
- @user = User.find(params[:id])
+ @user = User.find(current_user.id)
  @post = @user.posts.all
 end
 
@@ -26,11 +26,14 @@ end
  end
 
  #ユーザーの退会機能 
- def unsubscribe
+ 
+  #退会ページの表示
+ def confirm_withdraw
   @user = User.find(current_user.id)
  end
   
- def destroy
+  #退会機能のアクション
+ def withdraw
    @user = User.find(current_user.id)
    if @user.update(is_deleted: true)
    reset_session
@@ -41,7 +44,8 @@ end
     render :show
    end
  end
-  
+ #ユーザーの退会機能ここまで
+ 
 private
 
 def user_params

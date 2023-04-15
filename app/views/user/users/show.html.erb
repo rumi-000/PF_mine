@@ -34,7 +34,7 @@
    </div>
   <!--退会機能-->
    <div class="row align-items-start ml-5 mr-5">
-    <%= link_to"退会する", unsubscribe_users_path(@user.id)  %>
+    <%= link_to"退会する", confirm_withdraw_users_path(@user.id)  %>
    </div>
    
   <% end %>

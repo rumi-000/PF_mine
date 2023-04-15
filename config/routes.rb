@@ -30,16 +30,25 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
   }
 
-  scope module: 'user' do
-  resources :users, only: [:show, :edit, :update, :destroy] do
-   get :unsubscribe, on: :collection
-  end
-  
-  resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
-   resource :favorites, only: [:create, :destroy]
-  resources :post_comments, only: [:create, :destroy]
+ scope module: 'user' do
+  resources :users, only: [:show, :edit, :update] do
+   
+   # 退会機能のルーティング
+   collection do
+    #confirm_withdraw アクション：退会確認画面の表示
+   get 'confirm_withdraw'
+    #withdraw アクション：退会実行処理の実行
+   patch 'withdraw'
    end
+   
   end
-  
-  
  end
+  
+ resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
+  resource :favorites, only: [:create, :destroy]
+ resources :post_comments, only: [:create, :destroy]
+  end
+ 
+ end
+
+

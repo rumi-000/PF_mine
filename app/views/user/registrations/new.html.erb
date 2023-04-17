@@ -1,6 +1,6 @@
-<h2>Sign up</h2>
+<h2>Sign udp</h2>
 
-<%= form_with model: @user, url: user_registration_path do |f| %><!--#2-->
+<%= form_with model: @user, url: user_registration_path do |f| %>
   <%= render "user/shared/error_messages", resource: resource %>
 
   <div class="field"><!--#1-->
@@ -33,6 +33,3 @@
 
 <%= render "user/shared/links" %>
 
-
-<!--#1名前を追加した-->
-<!--#2form forをwithに変更した-->

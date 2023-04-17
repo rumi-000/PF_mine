@@ -1,30 +1,78 @@
-<!--画面いっぱいに横幅持って行きたい。いらなければ”-fluid”を消す。-->
-<div class="container-fluid">
+<!--welcomeメッセージとログイン表記-->
+<section class="jumbotron text-center">
+  <div class="container">
+  <h1 class="jumbotron-heading">ようこそ</h1>
+   <p class="lead text-muted">ここは防災グッズの閲覧、投稿、検索ができるコミニュティサイトです。</p>
+    <div class="row justify-content-md-center">
+     <p>
+       <%= link_to "会員登録", about_path, class: "btn btn-primary my-2" %>
+       <%= link_to "ログイン", choice_path, class: "btn btn-secondary my-2" %>
+     </p>
+    </div>
+  </div>
+ </section>
+ 
+ <!--会員登録をせずに利用ができるコンテンツ紹介-->
+ <section class="jumbotron text-center">
+ <div class="container">
   
- <div class="row mt-5 mb-5 offset-5">
-  <h2>ようこそ</h2>
- </div>
-
- <div class="row justify-content-md-center">
+  <h4 class="jumbotron-heading">以下のコンテンツは会員登録をせずにご利用が可能です。</h4>
+ 
+  <div class="row pb-2">
    
-  <div class="ml-1 col-md-4 bg-info">
-   <h4>初めて利用される方は
-       <br><%= link_to "こちら", about_path %>
-       <br>をクリック</h4>
+   <div class="col-lg-4">
+    <img class="rounded-circle" src=“../../assets/goods.png"==" alt="商品の閲覧" width="140" height="140">
+        <h2>商品の一覧</h2>
+        <p>実際に会員登録された方の<br>防災グッズを確認することができます。</p>
+        <p><%= link_to "商品の一覧へ", posts_path, class: "btn btn-primary my-2" %>
+   </div>
+   <div class="col-lg-4">
+    <img class="rounded-circle" src=“../../assets/goods.png"==" alt="商品の閲覧" width="140" height="140">
+        <h2>サイト説明のご案内</h2>
+        <p>本サイトの目的を<br>ご覧いただけます。</p>
+        <p><%= link_to "aboutページへ", about_path, class: "btn btn-primary my-2" %>
+   </div>
+   </div>
+
+  
+  <hr class="featurette-divider">
+  
+  
+ <!--会員登録するとできる機能の紹介-->
+ <h4 class="jumbotron-heading mt-5 mb-2">また、会員登録をすると以下の機能をご利用いただけます。</h4>
+ 
+ <div class="row-auto">
+  
+ <div class="row featurette">
+  <div class="col-md-7">
+   <h3 class="featurette-heading">防災グッズの詳細の確認</h3>
+     <p class="lead">投稿された防災グッズの名前、詳細、タグ情報をご確認いただけます。</p>
   </div>
-  <div class="col-md-2">
-   隙間
-  </div>
-  <div class="mr-1 col-md-4 bg-primary">
-   <h4>すでに会員登録済みの方は
-       <br><%= link_to "こちら", choice_path %>
-       <br>をクリック</h4>
+  <div class="col-md-5">
+   <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="" data-holder-rendered="true">
   </div>
 </div>
 
+ <div class="row featurette">
+  <div class="col-md-7">
+   <h3 class="featurette-heading">会員様同士のコメント機能</h3>
+     <p class="lead">防災グッズ一つ一つにコメント機能を設けております。ぜひレビュー等を共有してください。</p>
+  </div>
+  <div class="col-md-5">
+   <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="" data-holder-rendered="true">
+  </div>
+</div>
 
-<p>やること</p>
-<P>マイリストを作成する</P>
-<P>タグの検索ができる様にする</P>
-<P>タグの一覧ページを作る</P>
-<P>タグに画像を乗せられる様にする</P>
+ <div class="row featurette">
+  <div class="col-md-7">
+   <h3 class="featurette-heading">投稿グッズの検索</h3>
+     <p class="lead">防災グッズの名前や、タグ機能から、防災グッズの投稿を検索することができます。</p>
+  </div>
+  <div class="col-md-5">
+   <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 500px; height: 500px;" src="" data-holder-rendered="true">
+  </div>
+</div>
+
+  </div>
+  </div>
+  </section>

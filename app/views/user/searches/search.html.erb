@@ -4,18 +4,17 @@
   <h2>検索フォーム</h2>
  </div>
 
-　<div class = "row">
-　 <div class = "row-auto">
+  <div class = "row">
+  <div class = "row-auto">
     <h7>検索には、投稿名(グッズ名)、タグからの検索が可能です。</h7>
 
-   <div class = "col mt-3">
+  <div class = "col mt-3">
     <%= form_tag search_path, method: :get do %>
     <%= text_field_tag :q, params[:q] %>
-   </div>
-   
-   <div class = "col mt-1">
+  </div>
+  <div class = "col mt-1">
     <%= submit_tag '検索', class: "btn btn-primary" %>
-    <% end %>
+  <% end %>
    </div>
   </div>
  </div>
@@ -49,7 +48,5 @@
   <%= link_to "戻る", choice_path %>
  </div>
  
-</div>
-
-
+</div
 

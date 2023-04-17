@@ -37,18 +37,22 @@ Rails.application.routes.draw do
    collection do
     #confirm_withdraw アクション：退会確認画面の表示
    get 'confirm_withdraw'
-    #withdraw アクション：退会実行処理の実行
+    #withdraw アクション：退会実行処理の実行s
    patch 'withdraw'
    end
    
+   resources :lists, only: [:new, :create, :index, :show, :destroy]
+    #リスト作成のコントローラを呼び出し
+    post 'add_to_list', to: 'lists#add_to_list', as: 'add_to_list'
   end
- end
   
  resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
   resource :favorites, only: [:create, :destroy]
  resources :post_comments, only: [:create, :destroy]
-  end
+ resources :post_lists
+ end
  
+
  end
 
-
+end

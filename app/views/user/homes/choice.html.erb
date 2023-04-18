@@ -1,34 +1,38 @@
-<div class="container-fluid">
-  
- <div class="row mt-5 mb-5 offset-5">
-  <h2>こんにちは！</h2>
- </div>
+<section class="jumbotron text-center">
+ <div class="container">
+   
+  <h4 class="jumbotron-heading pb-3">こんにちは！</h4>
 
-<div class="row justify-content-md-center">
-  
-<div class="col-3">  
-  <h4>商品の一覧は
-  <br><%= link_to "こちら", posts_path %>
-  <br>をクリック</h4>
-  </div>
-  
-<div class="col-3">  
-  <h4>防災グッズの投稿は
-  <br><%= link_to "こちら", new_post_path %>
-  <br>をクリック</h4>
-</div>
+   <div class="row justify-content-md-center">
+     
+    <div class="row pb-2">
+     
+     <div class="col-lg-4">
+      <img class="rounded-circle" src=“"==" alt="商品の閲覧" width="140" height="140">
+       <h2>商品・投稿の一覧</h2>
+       <p>会員の方が投稿された投稿を見る</p>
+       <p><%= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>
+    </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=“"==" alt="商品の閲覧" width="140" height="140">
+       <h2>防災グッズの投稿</h2>
+       <p>防災グッズを実際に投稿する</p>
+       <p><%= link_to "クリック", new_post_path, class: "btn btn-primary my-2" %>
+    </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=“"==" alt="商品の閲覧" width="140" height="140">
+       <h2>防災グッズの検索</h2>
+       <p>投稿された防災グッズを検索する</p>
+       <p><%= link_to "クリック", search_path, class: "btn btn-primary my-2" %>
+    </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=“"==" alt="商品の閲覧" width="140" height="140">
+       <h2>マイページ</h2>
+       <p>投稿の一覧や、いいねした投稿の一覧を見る</p>
+       <p><%= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>
+    </div>
 
-<div class="col-3">  
-<h4>防災グッズの検索は
-  <br><%= link_to "こちら", search_path %>
-  <br>をクリック</h4>
-</div>
-
-<div class="col-3">  
-<h4>マイページは
-  <br><%= link_to "こちら", user_path(current_user.id) %>
-  <br>をクリック</h4>
-</div>
-
-</div>
-</div>
+   </div>
+   </div>
+    </div>
+  </section>

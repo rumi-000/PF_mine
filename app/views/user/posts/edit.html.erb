@@ -1,31 +1,61 @@
-<div class="container-fluid">
+<div class="container-fluid" style="height:650px;">
   
- <div class="row mt-5 mb-5 offset-5">
-  <h2>防災グッズを編集する</h2>
+ <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
+  <h2>投稿を編集する</h2>
  </div>
  
+ <div class="row justify-content-md-center">
+  <div class="col-auto">
+   <div class="row align-items-start ml-5 mr-5">
+    <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to '編集をやめる',  post_path(@post) %></h4>
+   </div>
+  </div>
+ </div>
  
- <div class="row">
- <%= form_with model: @post, url: post_path(@post) do |f| %>
+ <div class="row justify-content-around mt-5">
  
-  <div class="form-group">
-  <%= f.label:item_name , 'グッズ名' %>
-  <%= f.text_field :item_name %>
+  <div class="col-4">
+   <h3>現在の投稿(now)</h3>
+   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">
+   <br><%= image_tag @post.image, size: "100x100" %></p>
+   <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">商品名
+    <br><%= @post.item_name %></h5>
+   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
+    <br><%= @post.item_description %></p>
+   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ
+    <br><% @post.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+          <% end %>
+   </p>
+ </div>
+ 
+ <div class="col-4">
+  <h3>投稿の編集(new)</h3>
+  <%= image_tag @post.image, size: "100x100" %>
+  <%= form_with model: @post, url: post_path(@post) do |f| %>
+   <div class="form-group">
+       <%= f.label:image , 'グッズ画像'  %>
+   <br><%= f.file_field :image, accept: "image/*" %>
   </div>
-
   <div class="form-group">
-    <%= f.label:item_description , 'グッズ説明' %>
-    <%= f.text_area :item_description %>
+   <%= f.label:item_name , 'グッズ名' %>
+   <br><%= f.text_field :item_name %>
   </div>
-  
   <div class="form-group">
-    <%= f.submit "編集する"  %>
+   <%= f.label:item_description , 'グッズ説明' %>
+   <br><%= f.text_area :item_description %>
   </div>
-<% end %>
+  <div class="form-group">
+   <%= f.submit "編集する"  %>
+  </div>
+ <% end %>
+ </div>
 </div>
 
-<div>
-<%= link_to '投稿一覧へ',  posts_path %>
+<div class="row ml-3">
+  <%= link_to '編集をやめる',  post_path(@post) %>
+</div>
+ 
 </div>
 
-</div>
+

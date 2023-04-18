@@ -1,15 +1,19 @@
-<div class="h-100 container-fluid" >
-
- <div class="row mt-5 mb-5 offset-5">
-  <h2>防災グッズ詳細一覧</h2>
+<div class="container-fluid" style="height:600px;">
+  
+ <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
+  <h2>防災グッズの詳細</h2>
  </div>
 
 <div class="row align-items-start ml-5 mr-5">
- <div class="col-6">
-  <p>グッズ画像：<%= image_tag @post.image, size: "100x100" %></p>
-  <p>商品名:<%= @post.item_name %></p>
-  <p>商品説明:<%= @post.item_description %></p>
-  <p>タグ:<% @post.tags.each do |tag| %>
+ <div class="col-5">
+  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">グッズ画像
+   <br><%= image_tag @post.image, size: "100x100" %></p>
+  <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">商品名
+   <br><%= @post.item_name %></h5>
+  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
+   <br><%= @post.item_description %></p>
+  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ
+   <br><% @post.tags.each do |tag| %>
     <span><%= tag.name %></span>
           <% end %>
 </p>
@@ -31,12 +35,12 @@
  </div>
 
 <!--コメント機能・件数-->
- <div class="col-6">
+ <div class="col-7">
   <p>コメント件数：<%= @post.post_comments.count %></p>
  <div>
  <!--コメント機能・作成-->
    <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.text_area :comment, rows: '5',cols: '', placeholder: "コメントできます" %>
     <%= f.submit "送信する" %>
    <% end %>
  <!--コメント機能・表示-->
@@ -47,10 +51,10 @@
        <th scope="col">コメントしてくれた人</th>
        <th scope="col">コメント</th>
        <th scope="col">日程</th>
-      </tr>
+      
      </thead>
      <tbody>
-      <tr>
+      
        <td><%= post_comment.user.name %></td>
        <td><%= post_comment.comment %></td>
        <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>

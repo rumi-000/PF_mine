@@ -1,45 +1,49 @@
-<div class="container-fluid">
+<div class="container-fluid" style="height:900px;">
   
- <div class="row mt-5 mb-5 offset-5">
+ <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
   <h2>防災グッズを投稿する</h2>
  </div>
- 
- 
-<%= form_with model: @post, url: posts_path do |f| %>
 
+ <h3 class="row justify-content-md-center">投稿フォーム</h3>
+ 
+ <div class="row justify-content-md-center", style="padding:1rem 2rem border: 3px solid #000;">
+ 
+  <%= form_with model: @post, url: posts_path do |f| %>
+  
+  <div class="form-group mt-3">
+       <%= f.label:image , 'グッズ画像'  %>
+   <br><%= f.file_field :image, accept: "image/*" %>
+  </div>
+ 
   <div class="form-group">
-   <%= f.label:image , 'グッズ画像'  %>
-   <%= f.file_field :image, accept: "image/*" %>
+       <%= f.label:item_name , 'グッズ名' %>
+   <br><%= f.text_field :item_name %>
   </div>
   
   <div class="form-group">
-   <%= f.label:item_name , 'グッズ名' %>
-   <%= f.text_field :item_name %>
-  </div>
-  
-  <div class="form-group">
-   <%= f.label:item_description , 'グッズ説明' %>
-   <%= f.text_area :item_description %>
+       <%= f.label:item_description , 'グッズ説明' %>
+   <br><%= f.text_area :item_description %>
   </div>
 
-<!--タグ-->
-  <div class="form-group ml-5">
-   <%= f.label:name , 'タグ' %>
-    <% @tag.each do |tag| %>
-  <br>
-    <%= check_box_tag 'post[tag_ids][]', tag.id, false, id: "tag_#{tag.id}" %>
-    <%= label_tag "tag_#{tag.id}", tag.name %></label>
-  </br>
-    <% end %>
+  <div class="form-group">
+       <%= f.label:name , 'タグ' %>
+       <% @tag.each do |tag| %>
+   <br>
+        <%= check_box_tag 'post[tag_ids][]', tag.id, false, id: "tag_#{tag.id}" %>
+        <%= label_tag "tag_#{tag.id}", tag.name %></label>
+       <% end %>
   </div>
-    
+  
   <div class="form-group">
    <%= f.submit "投稿する"  %>
+   <% end %>
   </div>
   
-<% end %>
+ </div>
 
-<div>
-<%= link_to '投稿一覧へ',  posts_path %>
+ <div class="row">
+  <%= link_to '投稿一覧へ',  posts_path %>
+ </div>
+
 </div>
 

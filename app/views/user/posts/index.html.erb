@@ -1,15 +1,19 @@
 <div class="container-fluid" style="height:900px;">
   
- <div class="row mt-5 mb-5 offset-5">
-  <div class="col-auto">
-   <h2>投稿一覧</h2>
-  </div>
+ <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
+  <h2>投稿一覧</h2>
+ </div>
  
+ <div class="row justify-content-md-center">
   <div class="col-auto">
-   <h4>検索は<%= link_to "こちら" , search_path %>からご利用ができます。</h4>
-  </div>
+   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;">検索は<%= link_to "こちら" , search_path %>からご利用ができます。</h4>
   </div>
 
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;">新規投稿は<%= link_to "こちら" , new_post_path %>からご利用ができます。</h4>
+  </div>
+ </div>
+ 
 <!--投稿が一件もないとき-->
 　<!--投稿メッセージ-->
  <% if @posts.empty? %>
@@ -29,36 +33,36 @@
  
 <% else %>
 <!--投稿があるとき-->
-<div class="row mr-10">
- <% @posts.each do |post| %>
-<tr>
- <div class="card m-4" style="height:400px; width:400px;">
-   <div class="card-body">
-    <%= image_tag post.image, size: "100x100" %>
-    <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-    <p class="card-text">商品説明：<%= post.item_description %></p>
-    <p class="card-text">いいね件数:<%= post.favorites.count %> 件</p>
-    <p class="card-text">コメント件数:<%= post.post_comments.count %>件</p>
-    <p class="card-text">タグ:<% post.tags.each do |tag| %>
-                              <%= tag.name %>
-          　　　　　　　　　　　　　　　　　　　<% end %></p>
-    <p class="card-text">投稿者:<%= link_to post.user.name, user_path(post.user_id)%></p>
+<div class="row">
+ <!--投稿のカード-->
+  <% @posts.each do |post| %>
+   <tr>
+   <div class="col-md-6 ">
+    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+     <div class="card-body d-flex flex-column align-items-start">
+      <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= tag.name %><% end %></strong>
+      <h3 class="mb-0">
+       <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
+      </h3>
+     <div class="mb-1 text-muted">投稿者：<%= link_to post.user.name, user_path(post.user_id)%></div>
+      <p class="card-text">商品説明<br><%= post.item_description %></p>
+      <p class="card-text small">いいね件数:<%= post.favorites.count %> 件</p>
+      <h9 class="card-text small">コメント件数:<%= post.post_comments.count %>件</h9>
+    </div>
+    <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "100x100" %></div>
+    
    </div>
- </div>
-  <% end %>
- <div class="card m-4" style="height:300px; width:400px;">
-  <div class="card-body">
-   <h5 class="card-title">投稿する</h5>
-   <p class="card-text"></p>
-   <a href="/posts/new" class="btn btn-primary">new post</a>
+   </div>
+   </tr>
+   <% end %>
   </div>
- </div>
- </tr>
-  <% end %>
+ 
+ <% end %>
+
+
+ <div class ="row offset-11">
+  <%=link_to "機能一覧へ", choice_path %>
  </div>
  
- <div class ="row ml-10">
-  <%=link_to "戻る", choice_path %>
- </div>
 </div>
  

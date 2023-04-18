@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
+
   root :to => "user/homes#top"
-  
   get "about" => "user/homes#about", as: "about"
   get "choice" => "user/homes#choice", as: "choice"
   get "admin" => "admin/homes#top", as: "admin"
@@ -30,7 +29,13 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
   }
 
+  # ゲストログインのルーティング
+  devise_scope :user do
+  post 'user/guest_sign_in', to: 'user/sessions#guest_sign_in'
+  end
+  
  scope module: 'user' do
+  
   resources :users, only: [:show, :edit, :update] do
    
    # 退会機能のルーティング

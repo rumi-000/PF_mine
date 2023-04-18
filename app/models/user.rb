@@ -15,4 +15,13 @@ class User < ApplicationRecord
   super && (is_deleted == false)
  end
  
+ # ゲストログイン機能：ログインに必要な情報を渡す
+ def self.guest
+  find_or_create_by!(email: 'guest@example.com') do |user|
+   user.password = SecureRandom.urlsafe_base64
+   user.password_confirmation = user.password
+   user.name = "ゲストユーザー"
+  end
+ end
+  
 end

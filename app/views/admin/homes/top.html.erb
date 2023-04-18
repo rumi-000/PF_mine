@@ -1,4 +1,28 @@
-top
+<section class="jumbotron text-center">
+ <div class="container">
+   
+  <h4 class="jumbotron-heading pb-3">管理者トップ</h4>
 
-<%= link_to 'タグ作成',  admin_tags_path %>
-<%= link_to 'ユーザー一覧', admin_users_path %>
+   <div class="row justify-content-md-center">
+     
+    <div class="row pb-2">
+     
+     <div class="col-lg-4">
+      <img class="rounded-circle" src="<%= image_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">
+       <h3>投稿の一覧</h3>
+       <p><%= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>
+    </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=<%= image_path('plus.png') %> alt="商品の閲覧" width="140" height="140">
+       <h3>会員一覧</h3>
+       <p><%= link_to "クリック", admin_users_path, class: "btn btn-primary my-2" %>
+    </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=<%= image_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">
+       <h3>タグの管理</h3>
+       <p><%= link_to "クリック", admin_tags_path, class: "btn btn-primary my-2" %>
+    </div>
+   </div>
+   </div>
+    </div>
+  </section>

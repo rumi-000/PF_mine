@@ -1,26 +1,46 @@
-<h2> ユーザー側 Log in</h2>
-
-<%= form_with model: @user, url: user_session_path do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container col-sm-12 col-md-8 col-lg-7 col-xl-7 px-5 px-sm-0" style="height: 750px">
+  <div class="row">
+    <h3 class="ml-5 mt-5 mb-3">ログイン</h3>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  
+  <!--ログインフォーム-->
+  <div class="login">
+    <%= form_with model: @user, url: session_path(resource_name) do |f| %>
+    <div class="row justify-content-center">
+      <h4 class="col-10 my-4">会員の方はこちらからログイン</h4>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    
+    <div class="row justify-content-center">
+      <table style="width: 70%">
+        <tr>
+          <td width="25%" height="60px"><%= f.label :email, "メールアドレス", class: "col-form-label" %></td>
+          <td colspan="2" width="70%"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control border border-dark" %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td height="50px"><%= f.label :password, "パスワード", class: "col-form-label" %></td>
+          <td colspan="2"><%= f.password_field :password, autocomplete: "current-password", class: "form-control border border-dark" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td width="25%" height="130px"><%= f.submit "ログイン", class: "btn btn-primary btn-block" %></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    
+    <!--新規登録リンク-->
+    <div class="row justify-content-center">
+      <h4 class="col-10 my-4">会員登録がお済みでない方</h4>
+    </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-8 my-3">
+       <p><%= render "user/shared/links" %></p>
+      </div>
+    </div>
+    <% end %>
   </div>
-<% end %>
-<%= render "user/shared/links" %>
+</div>
+
+

@@ -31,7 +31,7 @@
  
  <div class="col-4">
   <h3>投稿の編集(new)</h3>
-  <%= image_tag @post.image, size: "100x100" %>
+  <%= image_tag @post.image, size: "200x200" %>
   <%= form_with model: @post, url: post_path(@post) do |f| %>
    <div class="form-group">
        <%= f.label:image , 'グッズ画像'  %>

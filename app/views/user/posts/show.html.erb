@@ -28,9 +28,9 @@
  
 <div class="row justify-content-around mt-5">
  
- <div class="col-4">
+ <div class="col-6">
   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">グッズ画像
-   <br><%= image_tag @post.image, size: "100x100" %></p>
+   <br><%= image_tag @post.image, size: "200x200" %></p>
   <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">商品名
    <br><%= @post.item_name %></h5>
   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
@@ -58,7 +58,7 @@
  </div>
 
 <!--コメント機能・件数-->
- <div class="col-4">
+ <div class="col-6 ml-0">
   <p>コメント件数：<%= @post.post_comments.count %></p>
  <div>
  <!--コメント機能・作成-->

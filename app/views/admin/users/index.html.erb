@@ -18,9 +18,9 @@
       <td><%= link_to user.id, admin_user_path(user.id) %></td>
       <td><%= user.name %></td>
       <td><% if user.is_deleted? %>
-       <span class="text-active">退会</span>	
+       <span class="ext-danger">退会</span>	
       <% else %>
-       <span class="text-invalid">有効</span>
+       <span class="text-primaryr">有効</span>
       <% end %>
       </td>
     </tr>

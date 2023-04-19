@@ -9,19 +9,17 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
     <header>
      <nav class="navbar navbar-dark bg-dark">
      <div class="container-fluid">
   <!--ロゴ-->
-      <div class="row">
-      <!--(後で消す：ブランドのclassをこれで表記するらしい)-->
-       <a class="navbar-brand" href="#">
-      <!--(後で消す：サイズはそのままだとピクセル。%をつけることも可能.altタグは何らかの理由で画像が表示できない場合に表示するテキスト)-->
-       <img src="/assets/logo.png" alt="" width="80" height="90" class="rounded mx-auto d-block">
-       </a>
-      </div>
+    <div class="row">
+      <a class="navbar-brand text-dark" href="/">
+        <img class="rounded-circle" src="<%= image_path('logo.png') %>"  alt="商品の閲覧" width="90" height="100">
+      </a>
+    </div>
   <!--サイト名-->
       <div class="row text-white mr-5" style="font-size: 20px;">防災グッズサーチ</div>
   <!--ウェルカムメッセージ-->

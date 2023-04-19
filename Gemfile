@@ -69,3 +69,7 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'jquery-rails'
+
+# 参考：https://qiita.com/mmaumtjgj/items/771deb2f3da3eecb4f54
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'

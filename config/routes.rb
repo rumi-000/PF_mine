@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "choice" => "user/homes#choice", as: "choice"
   get "admin" => "admin/homes#top", as: "admin"
   get "search" => "user/searches", as: "search"
+  get "admin/search" => "admin/users#search", as: "admin/search"
   
   #管理者側 カリキュラム通りに記載している。
   #app/views/admin/shared/_links.html.erbでコメントアウトしてる。
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :tags, only: [:index, :new, :edit, :update, :create, :destroy]
   resources :users, only: [:index, :show]
+  
   end
   
   
@@ -46,9 +48,6 @@ Rails.application.routes.draw do
    patch 'withdraw'
    end
    
-   resources :lists, only: [:new, :create, :index, :show, :destroy]
-    #リスト作成のコントローラを呼び出し
-    post 'add_to_list', to: 'lists#add_to_list', as: 'add_to_list'
   end
   
  resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do

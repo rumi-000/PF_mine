@@ -1,28 +1,27 @@
 class User::UsersController < ApplicationController
- before_action :authenticate_user!
+ before_action :authenticate_user!, except: [:show]
+ 
    # is_deletedがfalseならtrueを返すようにしている
-   
  def active_for_authentication?
   super && (is_deleted == false)
  end
  
+ def show
+  @user = User.find(current_user.id)
+  @post = @user.posts.all
+ end
  
-def show
- @user = User.find(current_user.id)
- @post = @user.posts.all
-end
-
  def edit
   @user = User.find(current_user.id)
  end
  
  def update
-   @user = User.find(current_user.id)
-    if @user.update(user_params)
-     redirect_to user_path(current_user.id)
-    else
-     render :edit
-    end
+  @user = User.find(current_user.id)
+   if @user.update(user_params)
+    redirect_to user_path(current_user.id)
+   else
+    render :edit
+   end
  end
 
  #ユーザーの退会機能 

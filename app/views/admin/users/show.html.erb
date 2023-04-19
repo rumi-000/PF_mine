@@ -21,6 +21,15 @@
    <p style="fontsize:5px; padding: 1rem 2rem; border-left: 4px solid #000;">ひとこと
    <br><%= @user.introduction %></p>
   </div>
+  
+ <div class = "row m-3">
+   <p style="fontsize:5px; padding: 1rem 2rem; border-left: 4px solid #000;">会員ステータス：
+    <% if @user.is_deleted? %>
+     退会	
+    <% else %>
+     有効
+    <% end %></p>
+ </div>
   <div class = "row m-3">
    <% if @user == current_user %>
    <div class="col-3">

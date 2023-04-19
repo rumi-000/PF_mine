@@ -1,4 +1,4 @@
-<div class="container-fluid" style="height:500px;">
+<div class="container-fluid" style="height:1000px;">
   
  <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
   <h2>マイページ</h2>
@@ -29,7 +29,20 @@
     <% else %>
      有効
     <% end %></p>
- </div>
+  </div>
+ 
+  <div class ="row ml-3">
+   <p class="col-2">ステータスを変更する</p>
+   <p class"col-2">
+    <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+     <%= f.radio_button :is_deleted, false %><%= f.label :is_active, "有効", class: "text-active" %>
+     <%= f.radio_button :is_deleted, true %><%= f.label :is_active, "退会済み", class: "text-invalid" %>
+   </p>
+   <p class"col-2 offset-6">
+    <%= f.submit "更新", class: "btn btn-primary" %>
+   <% end %></p>
+  </div>
+  
   <div class = "row m-3">
    <% if @user == current_user %>
    <div class="col-3">

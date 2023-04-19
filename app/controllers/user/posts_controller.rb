@@ -46,7 +46,8 @@ class User::PostsController < ApplicationController
  
  
  def index
-  @posts = Post.all
+  @posts = Post.all.page(params[:page])
+  #@posts = Post.all
   @message = "何も投稿されていません。投稿してみましょう！" if @posts.empty?
  end
  
@@ -81,3 +82,6 @@ class User::PostsController < ApplicationController
 
 end
 
+def index
+ 
+end

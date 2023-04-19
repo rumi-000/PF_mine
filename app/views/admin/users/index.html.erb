@@ -4,26 +4,41 @@
   <h2>会員一覧</h2>
  </div>
  
-<table class="table">
-  <thead>
-    <tr>
+  <!--ユーザ検索-->
+ <h4 class= "row mt-2 ml-2">ユーザー名を検索</h4> 
+
+ <div class = "col mt-3">
+  <%= form_tag admin_search_path, method: :get do %>
+  <%= text_field_tag :q, params[:q] %>
+ </div>
+ <div class = "col mt-1">
+  <%= submit_tag '検索', class: "btn btn-primary" %>
+  <% end %>
+ </div>
+ 
+  <div class="row">
+   <table class="table">
+    <thead>
+     <tr>
       <th scope="col">会員No.</th>
       <th scope="col">名前</th>
       <th scope="col">会員ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
+     </tr>
+    </thead>
+    <tbody>
     <% @users.each do |user| %>
-    <tr>
+     <tr>
       <td><%= link_to user.id, admin_user_path(user.id) %></td>
       <td><%= user.name %></td>
       <td><% if user.is_deleted? %>
-       <span class="ext-danger">退会</span>	
-      <% else %>
-       <span class="text-primaryr">有効</span>
-      <% end %>
+           <span class="ext-danger">退会</span>	
+          <% else %>
+           <span class="text-primaryr">有効</span>
+          <% end %>
       </td>
-    </tr>
-  <% end %> 
-  </tbody>
-</table>
+     </tr>
+    <% end %> 
+    </tbody>
+   </table>
+  </div>
+</div>

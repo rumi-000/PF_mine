@@ -10,4 +10,13 @@ def show
  @post = @user.posts
 end
 
+def search
+ if params[:q].present?
+    @q = params[:q]
+    @user = User.where("name LIKE ?", "%#{@q}%")
+ else
+    @user = []
+ end
+end
+
 end

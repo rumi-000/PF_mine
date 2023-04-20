@@ -7,10 +7,9 @@ end
 
 def show
  @user = User.find(params[:id])
- @post = @user.posts
+ @post = @user.posts.page(params[:page])
 end
 
-# 追加
 def update
   @user = User.find(params[:id])
    if @user.update(user_params)

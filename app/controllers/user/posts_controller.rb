@@ -47,32 +47,30 @@ class User::PostsController < ApplicationController
  
  def index
   @posts = Post.all.page(params[:page])
-  #@posts = Post.all
   @message = "何も投稿されていません。投稿してみましょう！" if @posts.empty?
  end
  
  def destroy
   @post = Post.find(params[:id])
   if @post.destroy
-  flash[:notice] = "投稿は削除されました."
-  redirect_to posts_path
+     flash[:notice] = "投稿は削除されました."
+     redirect_to posts_path
   else
-  posts = Post.all
-  render 'index'
+     posts = Post.all
+     render 'index'
   end
  end
  
- # 投稿の検索メソッド
- #searchコントローラーの実装で消す。一旦残してるだけ。
- def search
-  if params[:item_name].present?
-     @posts = Post.where('item_name LIKE ?', "%#{params[:item_name]}%")
-  else
-     @posts = Post.none
-  end
- end
 
- 
+def search
+  if params[:q].present?
+    @q = params[:q]
+    @posts = Post.joins(:tags).where("posts.item_name LIKE ? OR tags.name LIKE ?", "%#{@q}%", "%#{@q}%").page(params[:page])
+  else
+    @posts = []
+  end
+end
+
  private
 
  def post_params
@@ -82,6 +80,3 @@ class User::PostsController < ApplicationController
 
 end
 
-def index
- 
-end

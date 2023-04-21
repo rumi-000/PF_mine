@@ -1,0 +1,76 @@
+<header>
+     <% if user_signed_in? %>
+     <nav class="navbar navbar-dark" style="background-color: #9AB2FA;">
+     <% elsif admin_signed_in? %>
+     <nav class="navbar navbar-dark" style="background-color: #393939;">
+     <% else %>
+     <nav class="navbar navbar-dark" style="background-color: #B0E683;">
+    <% end %>
+     <div class="container-fluid">
+  <!--ロゴ-->
+    <div class="row">
+      <a class="navbar-brand text-dark" href="/">
+        <img class="rounded-circle" src="<%= image_path('logo.png') %>"  alt="商品の閲覧" width="90" height="100">
+      </a>
+    </div>
+  <!--サイト名-->
+      <div class="row text-white mr-5" style="font-size: 20px;">防災グッズサーチ</div>
+  <!--ウェルカムメッセージ-->
+      <% if user_signed_in? %>
+      <h6 class="text-center my-0 text-white">ようこそ、<%= current_user.name %>さん！</h6>
+      <% end %>
+  <!--メニュー-->
+      <div class="row">
+      <!--ハンバーガーメニューのアイコン-->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!--(後で消す:↓これでハンバーガーメニューの3本線を記入する)-->
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!--ハンバーガーメニューの中身-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+
+        <!--サインイン時-->
+         <% if user_signed_in? %>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active m-0">
+            <%= link_to "機能一覧", choice_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active m-0">
+            <%= link_to "ユーザーLog out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <!--管理者サインイン時-->
+        
+         <% elsif admin_signed_in? %>
+          <li class="nav-item active m-0">
+           <%= link_to "投稿一覧", posts_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active m-0">
+           <%= link_to "ユーザ一覧", admin_users_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active m-0">
+           <%= link_to "タグ管理", admin_tags_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active m-0">
+           <%= link_to "管理者Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+         
+        <!--サインしていない時-->
+         <% else %>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/users/sign_in">ログイン</a>
+          </li>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/users/sign_up">会員登録</a>
+          </li>
+          <li class="nav-item active m-0">
+           <a class="nav-link" href="/about">About</a>
+          </li>
+         <% end %>
+        </ul>
+      </div>
+
+    </header>

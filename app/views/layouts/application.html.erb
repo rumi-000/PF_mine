@@ -44,15 +44,14 @@
         <!--サインイン時-->
          <% if user_signed_in? %>
           <li class="nav-item active m-0">
+           <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active m-0">
             <%= link_to "機能一覧", choice_path, class: 'nav-link' %>
           </li>
           <li class="nav-item active m-0">
             <%= link_to "ユーザーLog out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
-          <li class="nav-item active m-0">
-           <a class="nav-link" href="/">Home</a>
-          </li>
-          
         <!--管理者サインイン時-->
         
          <% elsif admin_signed_in? %>

@@ -71,7 +71,12 @@
 
 
  <div class ="row offset-11">
-  <%=link_to "機能一覧へ", choice_path %>
+  <% if current_admin.present? %>
+   <%=link_to "管理人機能一覧へ", admin_path %>
+  <% else %>
+   <%=link_to "機能一覧へ", choice_path %>
+  <% end %>
+  
  </div>
  
 </div>

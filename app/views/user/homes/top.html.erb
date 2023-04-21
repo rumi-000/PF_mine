@@ -1,14 +1,21 @@
 <!--welcomeメッセージとログイン表記-->
 <section class="jumbotron text-center">
   <div class="container">
-  <h1 class="jumbotron-heading">ようこそ</h1>
+  <h1 class="jumbotron-heading">こんにちは！</h1>
    <p class="lead text-muted">ここは防災グッズの閲覧、投稿、検索ができるコミニュティサイトです。</p>
     <div class="row justify-content-md-center">
+     <% if user_signed_in? %>
      <p>
-       <%= link_to "会員登録", about_path, class: "btn btn-primary my-2" %>
-       <%= link_to "ログイン", choice_path, class: "btn btn-secondary my-2" %>
-       <br><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post %></li>
+       <%= link_to "機能一覧へ", choice_path, class: "btn btn-primary my-2" %>
+       <%= link_to "新規投稿へ", new_post_path, class: "btn btn-secondary my-2" %>
      </p>
+     <% else %>
+     <p>
+      <%= link_to "会員登録", about_path, class: "btn btn-primary my-2" %>
+      <%= link_to "ログイン", choice_path, class: "btn btn-secondary my-2" %>
+      <br><%= link_to 'ゲストログイン（閲覧用）', user_guest_sign_in_path, method: :post %></li>
+     </p>
+     <% end %>
     </div>
   </div>
  </section>

@@ -9,6 +9,9 @@
   <div class="form-group">
    <%= f.label:name , 'タグ名' %>
    <%= f.text_field :name %>
+   <br>
+   <%= f.label:description , 'タグ説明' %>
+   <%= f.text_field :description %>
   </div>
   <div class="form-group">
    <%= f.submit "投稿する"  %>
@@ -21,7 +24,7 @@
 <thead>
   <tr>
     <th>タグ名</th>
-    <th></th>
+    <th>タグ説明</th>
     <th></th>
   </tr>
  </thead>
@@ -29,6 +32,11 @@
    <% @tags.each do |tag| %>
    <tr>
     <td class="text-center"><%= tag.name %></td>
+    <% if @tag.description? %>
+    <td class="text-center"><%= link_to 'まだ説明がありません。', edit_admin_tag_path(tag.id) %></td>
+    <% else %>
+    <td class="text-center"><%= tag.description %></td>
+    <% end %>
     <td class="text-center"><%= link_to '編集する', edit_admin_tag_path(tag.id) %></td>
     <td class="text-center"><%= link_to '削除する', admin_tag_path(tag.id), method: :delete,  data: { confirm: '本当に消しますか？' } %></td>
     </tr>
@@ -37,6 +45,9 @@
   </table>
   </div>
   
+<div>
+<%= link_to '会員側の一覧を確認する', tags_path %>
+</div>
 <div>
 <%= link_to 'topへ戻る', admin_path %>
 </div>

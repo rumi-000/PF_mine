@@ -9,11 +9,16 @@
   <div class="form-group">
    <%= f.label:name , 'タグ名' %>
    <%= f.text_field :name %>
+   <br>
+   <%= f.label:description , 'タグ説明' %>
+   <%= f.text_field :description %>
   </div>
   <div class="form-group">
    <%= f.submit "変更する"  %>
   </div>
 <% end %>
 </div>
+
+<% link_to "戻る", tags_path %>
 
 </div>

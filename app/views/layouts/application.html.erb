@@ -12,7 +12,13 @@
   
   <body>
     <header>
-     <nav class="navbar navbar-dark bg-dark">
+     <% if user_signed_in? %>
+     <nav class="navbar navbar-dark" style="background-color: #9AB2FA;">
+     <% elsif admin_signed_in? %>
+     <nav class="navbar navbar-dark" style="background-color: #393939;">
+     <% else %>
+     <nav class="navbar navbar-dark" style="background-color: #B0E683;">
+    <% end %>
      <div class="container-fluid">
   <!--ロゴ-->
     <div class="row">
@@ -90,7 +96,13 @@
      <%= yield %>
     </main>
     
-　　<footer class="bg-dark pt-5 pb-10 fixed-bottom">
+    <% if user_signed_in? %>
+　　 <footer class="fixed-bottom" style="background-color: #9AB2FA;">
+　　<% elsif admin_signed_in? %>
+　　 <footer class="fixed-bottom" style="background-color: #393939;">
+　　<% else %>
+　　<footer class="fixed-bottom"style="background-color: #B0E683;">
+　　<% end %>
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">
@@ -101,6 +113,6 @@
   </body>
 </html>
 
-
 <!--勉強-->
 <!--ハンバーガメニューの参考サイト：https://www.manajob.jp/bootstrap/bootstrap/bootstrap-navigation-->
+

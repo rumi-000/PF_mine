@@ -1,0 +1,41 @@
+<div class="container-fluid" style="height:900px;">
+  
+  <div class="row justify-content-md-center mt-5">
+   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "投稿一覧へ" , posts_path %></h4>
+  </div>
+
+ <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
+  <h2>タグ一覧</h2>
+ </div>
+ 
+ <div class ="row m-3">
+  <% @tags.each do |tag| %>
+   <br>
+    <p class="col-1">
+     <%= link_to tag.name, tags_path(tag.id) %>
+    </p>
+   </br>
+  <% end %>
+  </div>
+  
+  <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
+   <h2>詳細</h2>
+  </div>
+  
+  <div class="row justify-content-around mt-5">
+   <div class="col-6">
+
+    <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ名
+     <br><%= @tag.name %></h5>
+    <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
+     <br><%#= @tag.item_description %></p>
+   </div>
+   
+  <div class="col-6">
+   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">グッズ画像
+    <br><%#= image_tag @tag.image, size: "200x200" %></p>
+  </div>
+  </div>
+</div>
+
+   

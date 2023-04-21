@@ -27,13 +27,13 @@
 
     <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ名
      <br><%= @tag.name %></h5>
-    <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
-     <br><%#= @tag.item_description %></p>
+    <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ説明
+     <br><%= @tag.description %></p>
    </div>
    
   <div class="col-6">
-   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">グッズ画像
-    <br><%#= image_tag @tag.image, size: "200x200" %></p>
+   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグイメージ
+    <br> <div><%= image_tag @tag.image, size: "200x200" %></div></p>
   </div>
   </div>
 </div>

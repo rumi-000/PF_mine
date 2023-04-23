@@ -35,7 +35,7 @@
        <% @tag.each do |tag| %>
    <br>
         <%= check_box_tag 'post[tag_ids][]', tag.id, false, id: "tag_#{tag.id}" %>
-        <%= label_tag "tag_#{tag.id}", tag.name %></label>
+        <%= label_tag "tag_#{tag.id}", tag.name %>
        <% end %>
   </div>
   

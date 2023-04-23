@@ -1,80 +1,93 @@
-<div class="container-fluid" style="height:700px;">
-  
- <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
-  <h2>防災グッズの詳細</h2>
- </div>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+  <h2 class="m-0"><%= @post.item_name %></h2>
+</div>
 
+
+ <!--メッセージ-->
  <div class="row justify-content-md-center">
- <div class="col-auto">
-  <div class="row align-items-start ml-5 mr-5">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to '投稿一覧へ',  posts_path %></h4>
-  </div>
- </div>
-
-<!--投稿の編集-->
- <% if @user == current_user %>
+  
   <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to '投稿編集へ',  edit_post_path %></h4>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to '投稿一覧へ',  posts_path %></h4>
+  </div>
+
+  <% if @user == current_user %>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to '投稿編集へ',  edit_post_path %></h4>
   </div>
   <% end %>
   
-  <!--投稿の削除-->
- <% if @user == current_user || current_admin.present? %>
-  <div class="row align-items-start ml-5 mr-5">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to '投稿を削除する', post_path(@post.id), method: :delete,  data: { confirm: '本当に消しますか？' } %></h4>
+  <% if @user == current_user || current_admin.present? %>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to '投稿を削除する', post_path(@post.id), method: :delete,  data: { confirm: '本当に消しますか？' } %></h4>
   </div>
- <% end %>
+  <% end %>
  </div>
 
-<div class="row justify-content-around mt-5">
+
+ <!--投稿詳細グッズ-->
+ <div class="jumbotron text-center my-4" style="background-color: #d1e5d4; margin: 0 auto; padding: 20px; border-radius: 30px; width: 95%">
+ <h4><%= @post.item_name %>の詳細情報</h4>
  
+  <div class="row justify-content-around mt-5">
+   
+ <!--グッズの詳細-->
  <div class="col-6">
-  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">グッズ画像
-   <br><%= image_tag @post.image, size: "200x200" %></p>
-  <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">商品名
-   <br><%= @post.item_name %></h5>
-  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">商品説明
-   <br><%= @post.item_description %></p>
-  <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ
-   <br><% @post.tags.each do |tag| %>
-    <span><%= tag.name %></span>
-          <% end %>
-  </p>
+  
+  <!--旧投稿情報-->
+   <%= render 'item', post: @post %>
 
   <!--いいね機能-->
-  <% if current_admin.present? %>
+  <div class = "row text-left">
+   
+   <!--管理者の場合-->
+ <% if current_admin.present? %>
+  <div class = "col">
    <p>いいね件数:<%= @post.favorites.count %> 件</p>
-  
+  </div>
+   
+   <!--ユーザーの場合-->
   <% else %>
   
+   <!--いいねしていた場合-->
    <% if @post.favorited_by?(current_user) %>
-    <p>
-     <%= link_to post_favorites_path(@post), method: :delete do %>
-      <span style="color:red;">❤︎</span>
-     <% end %>
-     </p>
+    <div class = "col">
+    <%= link_to post_favorites_path(@post), method: :delete do %>♡<% end %>
+    </div>
+    
+   <!--いいねしていなかった場合-->
    <% else %>
-    <p>
-     <%= link_to post_favorites_path(@post), method: :post do %>
-      <span>いいねをする</span>
-     <% end %>
-    </p>
-   <% end %>
+    <div class = "col">
+    <p><%= link_to post_favorites_path(@post), method: :post do %>いいねをする<% end %>
+    </div>
   <% end %>
+   
+  <% end %>
+  
+  <div class = "col">
+   いいね件数:<%= @post.favorites.count %> 件
+  </div>
+  
+  </div>
  </div>
 
 <!--コメント機能・件数-->
  <div class="col-6 ml-0">
+  
+ <div class = "row text-left">
   <p>コメント件数：<%= @post.post_comments.count %></p>
- <div>
+ </div>
+ 
+ <div class = "row text-left">
  <!--コメント機能・作成-->
    <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5',cols: '', placeholder: "コメントできます" %>
+    <%= f.text_area :comment, rows: '5', style: "width: 300px", placeholder: "コメントできます" %>
     <%= f.submit "送信する" %>
    <% end %>
+ </div>
+ 
+ <div class = "row">
  <!--コメント機能・表示-->
-   
-   <table class="table mt-3">
+   <table class="table mt-3", style="background-color: #F1F8E1; border-radius: 30px;">
      <thead>
        <th scope="col">コメントしてくれた人</th>
        <th scope="col">コメント</th>
@@ -95,7 +108,18 @@
      </tbody>
    </table>
  </div>
+ 
  </div>
+ 
+ </div>
+ 
+ </div>
+ 
+ <div class="row my-2 offset-10">
+  <% if current_admin.present? %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
  </div>
 
-</div>

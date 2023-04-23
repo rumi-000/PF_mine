@@ -1,8 +1,9 @@
 <!--welcomeメッセージとログイン表記-->
-<section class="jumbotron text-center">
+ <section class="jumbotron text-center mx-6 my-3" style="background-color: #BEECF7;  width: 90%; margin: 0 auto; border-radius: 30px;">
   <div class="container">
   <h1 class="jumbotron-heading">こんにちは！</h1>
    <p class="lead text-muted">ここは防災グッズの閲覧、投稿、検索ができるコミニュティサイトです。</p>
+    <img class="rounded-circle" src="<%= image_path('top.jpg') %>" alt="" width="140" height="140">
     <div class="row justify-content-md-center">
      <% if user_signed_in? %>
      <p>
@@ -21,21 +22,22 @@
  </section>
  
  <!--会員登録をせずに利用ができるコンテンツ紹介-->
- <section class="jumbotron text-center">
+ <section class="jumbotron text-center mx-6 mb-3" style="background-color: #d1e5d4; width: 90%; margin: 0 auto; border-radius: 30px;">
+
  <div class="container">
   
   <h4 class="jumbotron-heading">以下のコンテンツは会員登録をせずにご利用が可能です。</h4>
  
-  <div class="row pb-2">
+  <div class="row py-3 ">
    
    <div class="col-lg-4">
-    <img class="rounded-circle" src=“../../assets/goods.png"==" alt="商品の閲覧" width="140" height="140">
+    <img class="rounded-circle" src="<%= image_path('goods.png') %>" alt="商品の閲覧" width="140" height="140">
         <h2>商品の一覧</h2>
         <p>実際に会員登録された方の<br>防災グッズを確認することができます。</p>
         <p><%= link_to "商品の一覧へ", posts_path, class: "btn btn-primary my-2" %>
    </div>
    <div class="col-lg-4">
-    <img class="rounded-circle" src=“../../assets/goods.png"==" alt="商品の閲覧" width="140" height="140">
+    <img class="rounded-circle" src="<%= image_path('logo.png') %>" alt="商品の閲覧" width="140" height="140">
         <h2>サイト説明のご案内</h2>
         <p>本サイトの目的を<br>ご覧いただけます。</p>
         <p><%= link_to "aboutページへ", about_path, class: "btn btn-primary my-2" %>
@@ -54,7 +56,7 @@
  <div class="row featurette">
   <div class="col-md-7 mt-4">
    <h3 class="featurette-heading">防災グッズの詳細の確認</h3>
-     <p class="lead mt-4">投稿された防災グッズの名前や詳細、<br>タグ情報をご確認いただけます。</p>
+     <p class="lead py-5">投稿された防災グッズの<br>名前や詳細をご確認いただけます。</p>
   </div>
   <div class="col-md-5 mt-4">
    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 300px; height: 300px;" src="<%= image_path('show.png') %>" data-holder-rendered="true">
@@ -64,7 +66,7 @@
  <div class="row featurette">
   <div class="col-md-7 mt-4">
    <h3 class="featurette-heading">会員様同士のコメント機能</h3>
-     <p class="lead mt-4">防災グッズ一つ一つにコメント機能を設けております。<br>ぜひレビューや質問を共有してください。</p>
+     <p class="lead py-5">防災グッズ一つ一つに<br>コメント機能を設けております。<br>ぜひレビューや質問を共有してください。</p>
   </div>
   <div class="col-md-5 mt-4">
    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 350px; height: 250px;" src="<%= image_path('comment.png') %>" data-holder-rendered="true">
@@ -74,7 +76,7 @@
  <div class="row featurette">
   <div class="col-md-7 mt-4">
    <h3 class="featurette-heading">投稿グッズの検索</h3>
-     <p class="lead mt-4">防災グッズの名前や、タグ機能から、<br>防災グッズの投稿を検索することができます。</p>
+     <p class="lead py-5">防災グッズの名前や、タグ機能から、<br>投稿を検索することができます。</p>
   </div>
   <div class="col-md-5 mt-4">
    <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" style="width: 350px; height: 250px;" src="<%= image_path('search.png') %>" data-holder-rendered="true">

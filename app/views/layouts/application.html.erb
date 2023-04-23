@@ -13,10 +13,11 @@
   <body>
   <!--ヘッダー-->
    <%= render 'layouts/header' %>
+   
   <!--メイン-->
-   <main style="padding-bottom: 80px">
+  <main>
    <%= yield %>
-   </main>
+  </main>
   
   <!--フッターー-->
   　<% if user_signed_in? %>

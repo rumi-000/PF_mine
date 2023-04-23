@@ -1,24 +1,27 @@
-<div class="container-fluid" style="height:1000px;">
-  
- <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
-  <h2>検索フォーム</h2>
- </div>
- 
-  <div class="row justify-content-md-center">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "戻る", :back %></h4>
-  </div>
- 
- <h4 class= "row mt-2 ml-2">投稿名(グッズ名)、タグからの検索が可能です。</h4> 
 
- <div class = "col mt-3">
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">検索フォーム</h2>
+</div>
+ 
+ <!--戻るタグ-->
+ <div class="row justify-content-md-center mt-2">
+   <div class="jumbotron text-center" style="background-color: #BEECF7; margin: 0 auto;  width: 100%; padding: 5px; border-radius: 30px;";>
+    <h4 style="padding: 1rem 1rem;"><%= link_to "戻る", :back %></h4>
+   </div>
+ </div>
+
+
+<!--検索フォーム-->
+<div class="row justify-content-md-center my-3">
+ <section class="jumbotron text-center" style="background-color: #d1e5d4; width: 85%; border-radius: 30px;">
+
+ <h4 class="p-2 ">投稿名(グッズ名)、タグからの検索が可能です。</h4> 
   <%= form_tag search_path, method: :get do %>
   <%= text_field_tag :q, params[:q] %>
- </div>
- <div class = "col mt-1">
   <%= submit_tag '検索', class: "btn btn-primary" %>
   <% end %>
- </div>
- 
+
+
 <!--キーワード検索結果-->
 <div class ="row mt-3 ml-2">
  <h5>検索結果</h5>
@@ -57,5 +60,5 @@
     <p>投稿がありません。</p></p>
    <% end %>
    
+</section>
 </div>
-

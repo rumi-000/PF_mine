@@ -1,0 +1,15 @@
+<div class="jumbotron text-center my-4" style="background-color: #d1e5d4; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%">
+  <h2>タグ一覧</h2>
+  
+  <div class="row">
+    <% tags.each do |tag| %>
+    <br>
+    
+     <div class="col-2">
+      <p style="background-color: #BEECF7; border-radius: 30px;"><%= link_to tag.name, tag_path(tag) %></p>
+     </div>
+     
+    </br>
+    <% end %>
+  </div>
+</div>

@@ -1,31 +1,73 @@
 <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
  <h2 class="m-0">タグ参照ページ</h2>
 </div>
-  
-  <div class="row justify-content-md-center mt-5">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "投稿一覧へ" , posts_path %></h4>
+
+ <!--メッセージ-->
+ <div class="row justify-content-md-center mt-2">
+
+ <% if current_admin.present? %>
+ <!--管理人の場合-->
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "タグ一覧(ユーザー)" , tags_path %></h4>
+  </div>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "タグ管理" , admin_tags_path %></h4>
   </div>
 
-<%= render 'tags', tags: @tags %>
-  
-  <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
-   <h2>詳細</h2>
+ <!--ユーザーの場合-->
+ <% else %>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "タグ一覧へ" , tags_path %></h4>
   </div>
+ <% end %>
+ </div>
+
+ <!--タグ一覧-->
+ <%= render 'tags', tags: @tags %>
+  
+ <!--タグ詳細-->
+ <div class="jumbotron text-center my-4" style="background-color: #d1e5d4; margin: 0 auto; padding: 20px; border-radius: 30px; width: 95%">
+  <h2>タグ詳細</h2>
   
   <div class="row justify-content-around mt-5">
-   <div class="col-6">
-
-    <h5 style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ名
-     <br><%= @tag.name %></h5>
-    <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグ説明
-     <br><%= @tag.description %></p>
+   
+  <!--タグ詳細(名前・説明)-->
+  <div class="col-6">
+   
+   <div class = "row-6 text-left">
+    <h4>タグ名</h4>
+   </div>
+   <div class = "row-6 text-left" style ="height:40px;">
+    <h5><%= @tag.name %></h5>
    </div>
    
-  <div class="col-6">
-   <p style="padding: 1rem 2rem; border-left: 4px solid #000;">タグイメージ
-    <br> <div><%= image_tag @tag.image, size: "200x200" %></div></p>
+   <div class = "row-6 mt-3 text-left">
+    <h4>タグ説明</h4>
+   </div>
+  <div class = "row-6 text-left" style ="height:100px;">
+    <h5><%= @tag.description %></h5>
   </div>
+   
+  </div>
+   <!--タグ詳細(イメージ画像)-->
+   <div class="col-6">
+    
+  　 <div class = "row-6 text-left">
+     <h4>タグ名</h4>
+    </div>
+    <div class = "row-6 text-left" style ="height:200px;">
+     <%= image_tag @tag.image, size: "200x200" %>
+    </div>
+  </div>
+  
   </div>
 </div>
 
-   
+ <div class="row my-2 offset-10">
+  <% if current_admin.present? %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
+ </div>
+

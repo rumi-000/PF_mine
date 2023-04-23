@@ -1,91 +1,113 @@
-<div class="container-fluid" style="height:1000px;">
-  
- <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
-  <h2>マイページ</h2>
+ <div class="jumbotron text-center mt-4" style="background-color: #BDBDBD; margin: 0 auto; padding: 5px; border-radius: 30px; width: 35%;">
+  <h2 class="m-0"><%= @user.name %>様マイページ</h2>
  </div>
 
- <div class="row justify-content-md-center">
-  <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "戻る", :back %></h4>
- </div>
- 
- <div class = "row ml-3 mb-3">
-  <h3 class><%= @user.name %>のプロフィール</h3> 
- </div>
-
- <div class = "row m-3">
-  <h4 style="padding: 1rem 2rem; border-left: 4px solid #000;">名前
-  <br><%= @user.name %></h4>
- </div>
- 
- <div class = "row m-3">
-   <p style="fontsize:5px; padding: 1rem 2rem; border-left: 4px solid #000;">ひとこと
-   <br><%= @user.introduction %></p>
+ <!--メッセージ-->
+ <div class="row justify-content-md-center mt-2">
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to "管理者トップへ" , admin_users_path %></h4>
+  </div>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to "会員一覧へ" , admin_users_path %></h4>
   </div>
   
+ 
+ <section class="jumbotron text-center mx-6 my-3" style="background-color: #D9D9D9;  width: 90%; margin: 0 auto; padding: 15px; border-radius: 30px;">
+  <div class="container">
+  <h4 class="jumbotron-heading pb-3"><%= @user.name %>さんのプロフィール</h4>
+
+ <div class="row m-3">
+   <div class="col-5 text-left">
+    <h4>名前：</h4>
+   </div>
+   <div class="col-6">
+    <h4><%= @user.name %></h4>
+  </div>
+</div>
+
+<div class="row m-3">
+   <div class="col-5 text-left">
+    <h4>ひとこと：</h4>
+   </div>
+   <div class="col-6">
+     <% if @user.introduction.present? %>
+       <p><%= @user.introduction %></p>
+     <% else %>
+       <%= link_to edit_user_path(@user.id) do %>
+       <p>ひとこと未設定</p>
+     　<% end %>
+     <% end %>
+   </div>
+</div>
+
  <div class = "row m-3">
-   <p style="fontsize:5px; padding: 1rem 2rem; border-left: 4px solid #000;">会員ステータス：
+   <div class="col-5 text-left">
+    <h4>会員ステータス：</h4>
+   </div>
+   <div class="col-6">
     <% if @user.is_deleted? %>
-     退会	
+     <p>退会	</p>
     <% else %>
-     有効
-    <% end %></p>
+     <p>有効</p>
+    <% end %>
   </div>
+ </div>
  
- 
-  <div class ="row ml-3">
-   <p class="col-2">ステータスを変更する</p>
-   <p class"col-2">
+ <div class ="row m-3">
+  <div class="col-5 text-left">
+   <h4>ステータスを変更する：</h4>
+  </div>
+   <div class"col-3">
     <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
      <%= f.radio_button :is_deleted, false %><%= f.label :is_active, "有効", class: "text-active" %>
      <%= f.radio_button :is_deleted, true %><%= f.label :is_active, "退会済み", class: "text-invalid" %>
-   </p>
-   <p class"col-2 offset-6">
     <%= f.submit "更新", class: "btn btn-primary" %>
-   <% end %></p>
+   <% end %>
+  </div>
+ </div>
+ 
+
+
+ <h4 class="pt-4"><%= @user.name %>さんの投稿一覧</h4>
+ <% if @post.present? %>
+ <div class="row mt-5">
+  <% @post.each do |post| %>
+   <tr>
+    <div class="col-md-6 ">
+    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #E8E8E8; border-radius: 30px;">
+     <div class="card-body d-flex flex-column align-items-start">
+      <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path %><% end %></strong>
+       <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
+       <p class="card-text">商品説明<br><%= post.item_description %></p>
+       <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
+       <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
+       
+      <% if current_admin.present? %>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
+      <% else %>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
+      <% end %>
+     </div>
+    <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "200x200" %></div>
+   </div>
+   </div>
+   </tr>
+   
+  <% end %>
+  
   </div>
   
-  <div class = "row m-3">
-   <% if @user == current_user %>
-   <div class="col-3">
-    <%= link_to" ひとことを編集する", edit_user_path(@user.id)  %>
-   </div>
-   <div class="col-7 offset-2 ml-0">
-    <%= link_to"退会する", confirm_withdraw_users_path(@user.id)  %>
-   <% end %>
-   </div>
+  <div class ="row offset-9">
+   <%= paginate @post, theme: 'twitter-bootstrap-4' %>
   </div>
-
-
- <% if @post.present? %>
- 
- <!--カードの記述-->
- <div class="row mb-5">
-   <% @post.each do |post| %>
-    <tr>
-     <div class="col-md-6 ">
-      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-       <div class="card-body d-flex flex-column align-items-start">
-        <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= tag.name %><% end %></strong>
-         <h3 class="mb-0">
-          <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-         </h3>
-         <div class="mb-1 text-muted">投稿者：<%= link_to post.user.name, user_path(post.user_id)%></div>
-         <p class="card-text">商品説明<br><%= post.item_description %></p>
-         <p class="card-text small">いいね件数:<%= post.favorites.count %> 件</p>
-         <h9 class="card-text small">コメント件数:<%= post.post_comments.count %>件</h9>
-       </div>
-       <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "195x195" %></div>
-      </div>
-     </div>
-    </tr>
-   <% end %>
+  
+ <% else %>
+ <div class="row m-3 mt-5">
+   <h4>投稿がありません</h4>
  </div>
- <div class ="row offset-9">
-  <%= paginate @post, theme: 'twitter-bootstrap-4' %>
- </div>
- 
-   <% else %>
-    <p>投稿がありません。</p></p>
-   <% end %>
+ <% end %>
    
 </div>
+
+
+

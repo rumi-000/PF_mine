@@ -1,22 +1,36 @@
-<div class="container-fluid">
-  
- <div class="row mt-5 mb-5 offset-5">
-  <h2>会員一覧</h2>
- </div>
- 
-  <!--ユーザ検索-->
- <h4 class= "row mt-2 ml-2">ユーザー名を検索</h4> 
+<div class="jumbotron text-center mt-4" style="background-color: #BDBDBD; text-white; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+  <h2 class="m-0">会員一覧</h2>
+</div>
 
- <div class = "col mt-3">
-  <%= form_tag admin_search_path, method: :get do %>
-  <%= text_field_tag :q, params[:q] %>
+<!--メッセージ-->
+ <div class="row justify-content-md-center mt-2">
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to "管理者トップへ" , admin_path %></h4>
+  </div>
+
+  <!--ユーザ検索-->
+ <div class="jumbotron text-center my-4 pt-3" style="background-color: #D9D9D9; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%; height:150px;">
+  
+  <div class="row justify-content-md-center mt-2">
+   <h4>ユーザー名を検索</h4>
+  </div>
+  
+ <!--検索フォーム-->
+  <div class="row justify-content-md-center mt-2">
+   <%= form_tag admin_search_path, method: :get do %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag '検索', class: "btn btn-primary" %>
+   <% end %>
+  </div>
  </div>
- <div class = "col mt-1">
-  <%= submit_tag '検索', class: "btn btn-primary" %>
-  <% end %>
- </div>
- 
-  <div class="row">
+
+ <!--会員一覧-->
+ <div class="jumbotron text-center my-4 pt-3" style="background-color: #D9D9D9; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%; height:300px;">
+  <div class="row justify-content-md-center mt-2">
+   <h4>全ユーザー</h4>
+  </div>
+  
+  <div class="row justify-content-md-center mt-2">
    <table class="table">
     <thead>
      <tr>
@@ -31,7 +45,7 @@
       <td><%= link_to user.id, admin_user_path(user.id) %></td>
       <td><%= user.name %></td>
       <td><% if user.is_deleted? %>
-           <span class="ext-danger">退会</span>	
+           <span class="text-danger">退会</span>	
           <% else %>
            <span class="text-primaryr">有効</span>
           <% end %>

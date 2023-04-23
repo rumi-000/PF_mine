@@ -1,18 +1,12 @@
-<div class="container-fluid" style="height:900px;">
-  
-<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 35%;">
+ <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 35%;">
   <h2 class="m-0">防災グッズを投稿する</h2>
-</div>
-
- <div class="row justify-content-md-center mt-2">
-  <div class="col-auto">
-   <div class="jumbotron text-center" style="background-color: #BEECF7; margin: 0 auto;  width: 100%; padding: 5px; border-radius: 30px;";>
-    <h4 style="padding: 1rem 1rem;"><%= link_to "戻る", :back %></h4>
-   </div>
-  </div>
  </div>
 
-<section class="jumbotron text-center mx-6 my-3" style="background-color: #d1e5d4;  width: 90%; margin: 0 auto; border-radius: 30px;">
+ <div class="row justify-content-md-center mt-2">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "戻る", :back %></h4>
+  </div>
+
+<section class="jumbotron text-center mx-6 my-3" style="background-color: #d1e5d4;  width: 60%; margin: 0 auto; border-radius: 30px;">
  <div class="container">
   
  <h4 class="jumbotron-heading pb-3">投稿フォーム</h4>
@@ -53,7 +47,14 @@
  </div>
   </div>
   </section>
+  
+  <div class="row my-2 offset-10">
+  <% if current_admin.present? %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
+ </div>
 
-</div>
 
 

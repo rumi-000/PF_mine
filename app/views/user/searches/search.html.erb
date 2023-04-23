@@ -1,24 +1,25 @@
-<div class="container-fluid" style="height:1000px;">
-  
- <div class="row mt-5 mb-5 offset-5", style="border-bottom:3px solid #000;">
-  <h2>検索フォーム</h2>
- </div>
- 
-  <div class="row justify-content-md-center">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "戻る", :back %></h4>
-  </div>
- 
- <h4 class= "row mt-2 ml-2">投稿名(グッズ名)、タグからの検索が可能です。</h4> 
 
- <div class = "col mt-3">
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">検索フォーム</h2>
+</div>
+ 
+ <!--戻るタグ-->
+ <div class="row justify-content-md-center mt-2">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "戻る", :back %></h4>
+ </div>
+
+
+<!--検索フォーム-->
+<div class="row justify-content-md-center my-3">
+ <section class="jumbotron text-center" style="background-color: #d1e5d4; width: 85%; border-radius: 30px;">
+
+ <h4 class="p-2 ">投稿名(グッズ名)、タグからの検索が可能です。</h4> 
   <%= form_tag search_path, method: :get do %>
   <%= text_field_tag :q, params[:q] %>
- </div>
- <div class = "col mt-1">
   <%= submit_tag '検索', class: "btn btn-primary" %>
   <% end %>
- </div>
- 
+
+
 <!--キーワード検索結果-->
 <div class ="row mt-3 ml-2">
  <h5>検索結果</h5>
@@ -31,21 +32,24 @@
  <div class="row mb-5">
    <% @posts.each do |post| %>
     <tr>
-     <div class="col-md-6 ">
-      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-       <div class="card-body d-flex flex-column align-items-start">
-        <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= tag.name %><% end %></strong>
-         <h3 class="mb-0">
-          <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-         </h3>
-         <div class="mb-1 text-muted">投稿者：<%= link_to post.user.name, user_path(post.user_id)%></div>
-         <p class="card-text">商品説明<br><%= post.item_description %></p>
-         <p class="card-text small">いいね件数:<%= post.favorites.count %> 件</p>
-         <h9 class="card-text small">コメント件数:<%= post.post_comments.count %>件</h9>
-       </div>
-       <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "195x195" %></div>
-      </div>
+   <div class="col-md-6 ">
+    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #F1F8E1; border-radius: 30px;">
+     <div class="card-body d-flex flex-column align-items-start">
+      <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path %><% end %></strong>
+       <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
+       <p class="card-text">商品説明<br><%= post.item_description %></p>
+       <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
+       <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
+       
+      <% if current_admin.present? %>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
+      <% else %>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
+      <% end %>
      </div>
+    <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "200x200" %></div>
+   </div>
+   </div>
     </tr>
    <% end %>
  </div>
@@ -57,5 +61,15 @@
     <p>投稿がありません。</p></p>
    <% end %>
    
+</section>
 </div>
 
+  <div class="row my-2 offset-10">
+  <% if current_admin.present? %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
+ </div>
+ 
+ 

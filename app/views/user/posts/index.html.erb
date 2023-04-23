@@ -1,36 +1,32 @@
-<div class="container-fluid" style="height:900px;">
-  
- <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
-  <h2>投稿一覧</h2>
- </div>
- 
- <div class="row justify-content-md-center">
-  <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;">検索は<%= link_to "こちら" , search_path %>からご利用ができます。</h4>
-  </div>
+<!--<div class="container-fluid" style="height:900px;">-->
 
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+  <h2 class="m-0">投稿一覧</h2>
+</div>
+ 
+ <!--メッセージ-->
+ <div class="row justify-content-md-center mt-2">
+  
   <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;">新規投稿は<%= link_to "こちら" , new_post_path %>からご利用ができます。</h4>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">検索は<%= link_to "こちら" , search_path %>をクリック</h4>
+  </div>
+  
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">新規投稿は<%= link_to "こちら" , new_post_path %>をクリック</h4>
   </div>
  </div>
- 
+
+<!--一覧フォーム-->
+ <div class="jumbotron text-center my-4" style="background-color: #d1e5d4; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%";>
 <!--投稿が一件もないとき-->
 　<!--投稿メッセージ-->
  <% if @posts.empty? %>
-  <div class ="row ml-5">
-   <p><%= @message %></p>
-  </div>
+  <div class="row ml-5" style="height: 400px;">
+   <h5><%= @message %></h5>
   <!--新規投稿リンク-->
- <div class ="row ml-5">
- <div class="card m-4" style="height:300px; width:400px;">
-  <div class="card-body">
-   <h5 class="card-title">投稿する</h5>
-   <p class="card-text"></p>
-   <a href="/posts/new" class="btn btn-primary">クリック</a>
+  <br><h5><%= link_to "投稿する" , new_post_path %></h5>
   </div>
- </div>
- </div>
- 
+  
 <% else %>
 <!--投稿があるとき-->
 <div class="row">
@@ -38,25 +34,21 @@
   <% @posts.each do |post| %>
    <tr>
    <div class="col-md-6 ">
-    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #F1F8E1; border-radius: 30px;">
      <div class="card-body d-flex flex-column align-items-start">
       <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path %><% end %></strong>
-      <h3 class="mb-0">
        <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-      </h3>
-     <div class="mb-1 text-muted">投稿者：
+       <p class="card-text">商品説明<br><%= post.item_description %></p>
+       <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
+       <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
+       
       <% if current_admin.present? %>
-       <div class="mb-1 text-muted">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
       <% else %>
-       <div class="mb-1 text-muted">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
+       <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
       <% end %>
      </div>
-      <p class="card-text">商品説明<br><%= post.item_description %></p>
-      <p class="card-text small">いいね件数:<%= post.favorites.count %> 件</p>
-      <h9 class="card-text small">コメント件数:<%= post.post_comments.count %>件</h9>
-    </div>
     <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "200x200" %></div>
-    
    </div>
    </div>
    </tr>
@@ -69,16 +61,15 @@
  
  <% end %>
 
+</div>
 
- <div class ="row offset-11">
+<div class="row my-2 offset-10">
   <% if current_admin.present? %>
-   <%=link_to "管理人機能一覧へ", admin_path %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
   <% else %>
-   <%=link_to "機能一覧へ", choice_path %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
   <% end %>
-  
  </div>
  
 </div>
  
-

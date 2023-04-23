@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
         #カスタマー側のトップページ(rumi)
         root_path
     elsif resource_or_scope == :admin
-        new_admin_session_path
+        root_path
     else
         root_path
     end

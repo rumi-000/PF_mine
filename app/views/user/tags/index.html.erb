@@ -1,41 +1,40 @@
-<div class="container-fluid" style="height:900px;">
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">タグ参照ページ</h2>
+</div>
+
+ <!--メッセージ-->
+ <div class="row justify-content-md-center mt-2">
   
+ <!--管理人の場合-->
  <% if current_admin.present? %>
- 
-  <div class="row justify-content-md-center mt-3">
-   <div class="col-auto">
-    <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "投稿一覧" , posts_path %></h4>
-   </div>
-   <div class="col-auto">
-    <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "タグ管理" , admin_tags_path %></h4>
-   </div>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "投稿一覧" , posts_path %></h4>
   </div>
- <% else %>
-  <div class="row justify-content-md-center">
-   <h4 style="padding: 1rem 1rem; border-left: 6px double #000;"><%= link_to "投稿一覧へ" , posts_path %></h4>
-  </div>
- <% end %>
-  
-  
- <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
-  <h2>タグ一覧</h2>
- </div>
- 
- <div class ="row m-3">
-  <% @tags.each do |tag| %>
-   <br>
-    <p class="col-1">
-     <%= link_to tag.name, tag_path(tag) %>
-    </p>
-   </br>
-  <% end %>
-   
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "タグ管理" , admin_tags_path %></h4>
   </div>
 
-  <div class="row mt-5 mb-5 offset-5 text:enter-block pl-2", style="width:150px; border-bottom:3px solid #000;">
-  <h2>詳細</h2>
-  
+ <!--ユーザーの場合-->
+ <% else %>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "投稿一覧へ" , posts_path %></h4>
   </div>
- 
+ <% end %>
  </div>
+  
+ <!--タグ一覧 (部分テンプレート)-->
+ <%= render 'tags', tags: @tags %>
+
+ <!--タグ詳細ページ-->
+ <div class="jumbotron text-center my-4 pt-3" style="background-color: #d1e5d4; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%">
+  <h2>タグ詳細</h2>
+    <p>上記タグ一覧をクリックすると詳細をご覧いただけます。</p>
+</div>
  
+ <div class="row my-2 offset-10">
+  <% if current_admin.present? %>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
+ </div>

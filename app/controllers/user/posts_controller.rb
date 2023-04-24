@@ -15,8 +15,8 @@ class User::PostsController < ApplicationController
     end
      redirect_to post_path(@post)
   else
-   @posts = Post.all
-   render :index
+   @tag = Tag.all
+   render :new
   end
  end
   

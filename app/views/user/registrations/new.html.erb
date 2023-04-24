@@ -1,35 +1,52 @@
-<h2>Sign udp</h2>
+<div class="container col-sm-12 col-md-8 col-lg-7 col-xl-7 px-5 px-sm-0" style="height: 750px">
+  
+  <div class="row">
+    <h3 class="ml-5 mt-5 mb-3">会員登録</h3>
+  </div>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
+  <!--ログインフォーム-->
+  <div class="login">
+    <div class="row justify-content-center">
+      <h4 class="col-10 my-4">下記情報をご入力いただくと、会員登録が可能です。</h4>
+    </div>
+  
   <%= render "user/shared/error_messages", resource: resource %>
-
-  <div class="field"><!--#1-->
-   <%= f.label :name %><br>
-   <%= f.text_field :name %>
+  
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+  <div class="row justify-content-center">
+  <table style="width: 70%">
+   <tr>
+     <td width="25%" height="60px"><%= f.label :name, "お名前", class: "col-form-label" %></td>
+     <td colspan="2" width="70%"><%= f.text_field :name, autofocus: true, autocomplete: "email", class: "form-control border border-dark" %></td>
+     <td></td>
+   </tr>
+   
+   <tr>
+     <td height="50px"><%= f.label :email, "Email", class: "col-form-label" %></td>
+     <td colspan="2"><%= f.email_field :email, autocomplete: "current-password", class: "form-control border border-dark" %></td>
+   </tr>
+   
+　 <tr>
+     <td height="50px"><%= f.label :password, "パスワード(#{@minimum_password_length}桁以上)" %></td>
+     <td colspan="2" width="70%"><%= f.password_field :password, autocomplete: "new-password", class: "form-control border border-dark" %></td>
+   </tr>
+   
+   <tr>
+     <td height="50px"><%= f.label :password_confirmation, "パスワード(確認用)" %></td>
+     <td colspan="2" width="70%"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control border border-dark" %></td>
+   </tr>
+   
+   <tr>
+     <td></td>
+     <td width="25%" height="130px"><%= f.submit "会員登録", class: "btn btn-primary btn-block" %></td>
+     <td></td>
+   </tr>
+   
+  </table>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <% end %>
+  
+  <div class="row justify-content-center">
+   <h4 class="col-10 my-4">すでに会員の方はこちら→<%= render "user/shared/links" %></h4>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "user/shared/links" %>
 

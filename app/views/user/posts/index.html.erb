@@ -38,7 +38,7 @@
      <div class="card-body d-flex flex-column align-items-start">
       <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path %><% end %></strong>
        <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-       <p class="card-text">商品説明<br><%= post.item_description %></p>
+       <p class="card-text text-left">商品説明<br><%= post.item_description %></p>
        <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
        <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
        
@@ -48,7 +48,6 @@
        <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
       <% end %>
      </div>
-    <div class="card m-4" style="height:200px; width:200px;"><%= image_tag post.image, size: "200x200" %></div>
    </div>
    </div>
    </tr>
@@ -63,7 +62,7 @@
 
 </div>
 
-<div class="row my-2 offset-10">
+<div class="row my-2 offset-8">
   <% if current_admin.present? %>
    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
   <% else %>

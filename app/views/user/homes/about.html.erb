@@ -1,20 +1,88 @@
- <div class="container-fluid">
+<div class="container">
+ 
+ <div class="row mt-5 justify-content-between align-items-center">
+ 
+  <div class="col-md-6 col-lg-6">
+   <div class="about_us_img"><img src="img/top_service.png" alt=""></div>
+  </div>
   
- <div class="row mt-5 mb-5 offset-5">
-  <h2>やること</h2>
+  <div class="col-md-6 col-lg-5">
+   <div class="about_us_text">
+   <h2>日本の災害事情について</h2>
+    <p>災害と聞いて、皆さんは何を思い浮かべますか。</p>
+    <p>地震や津波以外にも様々な自然現象の脅威があります。<br>
+       そして、それらを避けて日本で生きることは困難です。</p>
+    <p>誰もが被災する可能性があるからこそ、様々な人に合わせた防災グッズが生まれています。<br>
+       ここは、そんな防災グッズを探せる、見つけるサイトとなっています。</p>
+    <p>ぜひ、このサイトを利用し様々な人と交流をして、備える力を高めていただきたいです。</p>
+   </div>
+  </div>
  </div>
 
-<div class="row-4 ml-2">
-<ul>
-  <li>kaminariの導入</li>
-  <li>admin側のユーザー検索機能</li>
-  <li>admin側のユーザーレイアウト</li>
-  <li>admin側の投稿削除機能</li>
-  <li>タグの詳細機能</li>
-  <li>ユーザーいいねまとめ閲覧機能</li>
-  <li>post一覧並べ替え機能</li>
-  <li>タグ依頼フォーム</li>
-  <li>コメント一覧機能</li>
-  <li>ヘッダーの編集</li>
-  <li>リーダブルコードの編集</li>
-</ul>
+<hr class="featurette-divider my-3">
+
+<div class="row justify-content-between align-items-center">
+
+<div class="col-6">
+ <div class="about_us_text">
+  <h2>本サイトの機能一覧</h2>
+  <p>※ ☆がついている機能は会員登録後にご利用いただけます</p>
+ </div>
+</div>
+</div>
+
+<div class="row mt-4">
+ <div class="col-6">
+  <h2>投稿</h2>
+  
+  <h4>防災グッズの名前と説明を投稿</h4>
+  <p>投稿したいグッズを投稿して、会員の皆様で共有をいただけます。</p>
+  <h4>コメント機能について</h4>
+  <p>投稿について、コメントをいただけることがあります。<br>疑問やレビューなど是非ご交流ください。</p>
+  <h4>いいね機能について</h4>
+  <p>気にいった投稿には、いいね機能を用いてお気に入り登録ができます。</p>
+ </div>
+  <div class="col-6">
+  <img src="<%= image_path('good_top1.jpg') %>" alt="">
+ </div>
+ </div>
+
+<hr class="featurette-divider my-3">
+
+<div class="row mt-4">
+ <div class="col-6">
+  <h2>閲覧</h2>
+  
+  <h4>投稿一覧表示</h4>
+  <p>他会員様の投稿を閲覧することが可能です。</p>
+  <h4>投稿詳細表示</h4>
+  <p>一覧ページから、投稿の詳細をご覧いただけます。<br>同ページにて、いいねやコメント機能もご利用いただけます。</p>
+  <h4>会員様投稿ページ</h4>
+  <p>他会員様ごとに投稿の一覧を閲覧いただけます。<br>ひとことも設定できますので、ぜひご利用ください。</p>
+ </div>
+  <div class="col-6">
+  <img src="<%= image_path('good_top1.jpg') %>" alt="">
+ </div>
+ </div>
+ 
+ <hr class="featurette-divider my-3">
+
+<div class="row mt-4 mb-4">
+ <div class="col-6">
+  <h2>検索</h2>
+  <h4>投稿検索機能</h4>
+  <p>投稿名から防災グッズを検索することが可能です。<br>後述するタグについても同様に検索いただけます。</p>
+  <h4>タグについて</h4>
+  <p>投稿にはタグをつけることができます。<br>複数のタグをご用意しておりますので、投稿の際は利用ケースに合わせてご利用ください。</p>
+ </div>
+ <div class="col-6">
+  <img src="<%= image_path('good_top1.jpg') %>" alt="">
+ </div>
+ </div>
+
+
+ <div class="row justify-content-md-center mt-2">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to 'トップへ戻る',  root_path %></h4>
+ </div>
+ 
+ </div>

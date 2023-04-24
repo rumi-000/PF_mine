@@ -6,7 +6,7 @@
  <div class="row justify-content-md-center mt-2">
    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "戻る", :back %></h4>
   </div>
- 
+
  <!--プロフィール情報-->
  <section class="jumbotron text-center mx-6 my-3" style="background-color: #d1e5d4;  width: 90%; margin: 0 auto; padding: 5px; border-radius: 30px;">
   <div class="container">
@@ -52,10 +52,8 @@
     <% end %>
     </div>
    </div>
-  </div>
+  
 
-
- 
   <h4 class="my-3"><%= @user.name %>さんの投稿一覧</h4>
  <% if @post.present? %>
  <div class="row mt-5">
@@ -66,7 +64,7 @@
      <div class="card-body d-flex flex-column align-items-start">
       <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path %><% end %></strong>
        <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-       <p class="card-text text-left">商品説明<br><%= post.item_description %></p>
+       <p class="card-text text">商品説明<br><%= post.item_description %></p>
        <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
        <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
        
@@ -100,6 +98,7 @@
   </div>
  </div>
  <% end %>
+ </div>
  </section>
  
   <div class="row my-2 offset-9">

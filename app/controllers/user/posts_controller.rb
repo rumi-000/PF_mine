@@ -1,5 +1,5 @@
 class User::PostsController < ApplicationController
- before_action :authenticate_user!, only: [:new,:create,:show]
+before_action :authenticate_user!, only: [:new,:create,]
 
  def new
   @post = Post.new
@@ -77,6 +77,20 @@ end
   params.require(:post).permit(:item_name, :item_description, :image)
  end
 
+def authenticate_user_or_admin!
+  authenticate_user!
+  unless current_user.admin? || current_user.member?
+    redirect_to root_path, alert: "You must be a member or admin to access this page."
+  end
+end
 
 end
+
+
+
+
+
+
+
+
 

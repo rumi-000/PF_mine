@@ -1,6 +1,5 @@
 class User::UsersController < ApplicationController
- before_action :authenticate_user!, except: [:show]
- 
+
    # is_deletedがfalseならtrueを返すようにしている
  def active_for_authentication?
   super && (is_deleted == false)
@@ -45,7 +44,7 @@ class User::UsersController < ApplicationController
    end
  end
  #ユーザーの退会機能ここまで
- 
+
 private
 
 def user_params

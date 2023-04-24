@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   post 'user/guest_sign_in', to: 'user/sessions#guest_sign_in'
   end
   
+ 
  scope module: 'user' do
   
   resources :users, only: [:show, :edit, :update] do
@@ -54,9 +55,9 @@ Rails.application.routes.draw do
   resource :favorites, only: [:create, :destroy]
  resources :post_comments, only: [:create, :destroy]
  end
- 
  resources :tags, only: [:index, :show]
 
  end
-
+ 
 end
+

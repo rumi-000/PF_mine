@@ -1,0 +1,20 @@
+   <!--いいねしていた場合-->
+   <% if post.favorited_by?(current_user) %>
+    <div class = "col">
+    <%#= link_to post_favorites_path(@post), method: :delete do %>♡<%# end %>
+    <!--非同期導入のため書き換え-->
+    <%= link_to post_favorites_path(post), method: :delete, remote: true do %>♡<% end %>
+    <!--非同期導入のため書き換えここまで-->
+    </div>
+    
+   <!--いいねしていなかった場合-->
+   <% else %>
+    <div class = "col">
+    <%#= link_to post_favorites_path(@post), method: :post do %><%# end %>
+    <!--非同期導入のため書き換え-->
+    <%= link_to post_favorites_path(post), method: :post, remote: true do %>いいねをする<% end %>
+    <!--非同期導入のため書き換えここまで-->
+    </div>
+  <% end %>
+  
+  <!--@post = post-->

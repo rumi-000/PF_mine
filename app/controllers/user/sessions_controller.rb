@@ -43,7 +43,7 @@ def user_state
   if @user
    if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true )
     flash[:danger] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
-   redirect_to new_customer_session_path
+   redirect_to  new_user_registration_path
    end
   end
 end

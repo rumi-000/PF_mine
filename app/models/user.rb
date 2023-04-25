@@ -22,8 +22,5 @@ class User < ApplicationRecord
   end
  end
   
-  # 退会機能：退会していない会員を定義
- def active_for_authentication?
-  super && (is_deleted == false)
- end
+
 end

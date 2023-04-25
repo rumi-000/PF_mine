@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :tags, only: [:index, :new, :edit, :update, :create, :destroy]
   resources :users, only: [:index, :show, :update]
-  
+  resources :chats, only: [:index, :destroy]
   end
   
 
@@ -56,7 +56,8 @@ Rails.application.routes.draw do
  end
  
  resources :tags, only: [:index, :show]
-
+ resources :chats, only: [:new, :create, :index]
+ 
  end
  
 end

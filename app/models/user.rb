@@ -9,6 +9,7 @@ class User < ApplicationRecord
  has_many :posts, dependent: :destroy
  has_many :favorites, dependent: :destroy
  has_many :post_comments, dependent: :destroy
+ has_many :chats, dependent: :destroy
  
 # 退会機能：退会していない会員を定義
  def active_for_authentication?

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "search" => "user/searches", as: "search"
   get "admin/search" => "admin/users#search", as: "admin/search"
   
+  post "/" => "user/homes#top"
+  
   #管理者側 カリキュラム通りに記載している。
   #app/views/admin/shared/_links.html.erbでコメントアウトしてる。
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -19,11 +21,7 @@ Rails.application.routes.draw do
   
   end
   
-  
-  
-  
-  
-  
+
   #ユーザー側 カリキュラム通りに記載している。
   #app/views/user/shared/_links.html.erbでコメントアウトしてる。
   devise_for :users, skip: [:passwords], controllers: {
@@ -37,6 +35,7 @@ Rails.application.routes.draw do
   end
   
  
+
  scope module: 'user' do
   
   resources :users, only: [:show, :edit, :update] do
@@ -48,16 +47,18 @@ Rails.application.routes.draw do
     #withdraw アクション：退会実行処理の実行s
    patch 'withdraw'
    end
-   
+ 
   end
   
  resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
   resource :favorites, only: [:create, :destroy]
  resources :post_comments, only: [:create, :destroy]
  end
+ 
  resources :tags, only: [:index, :show]
 
  end
  
 end
+
 

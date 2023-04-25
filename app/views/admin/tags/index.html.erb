@@ -5,10 +5,13 @@
  <!--メッセージ-->
  <div class="row justify-content-md-center mt-2">
   <div class="col-auto">
-  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to "管理者トップへ" , admin_path %></h4>
- </div>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to "管理者トップへ" , admin_path %></h4>
+  </div>
   <div class="col-auto">
    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to '会員側の一覧を確認する', tags_path %></h4>
+  </div>
+  <div class="col-auto">
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BDBDBD;"><%= link_to 'タグ依頼を確認する', admin_chats_path %></h4>
   </div>
  </div>
  
@@ -69,5 +72,4 @@
   </tr>
   <% end %>
  </div>
-
 

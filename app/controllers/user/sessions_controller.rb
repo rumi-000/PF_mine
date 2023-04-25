@@ -49,4 +49,3 @@ def user_state
 end
 
  end
-

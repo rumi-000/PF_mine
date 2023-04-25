@@ -9,37 +9,37 @@
     <div class="row pb-2">
      
      <div class="col-lg-4">
-      <img class="rounded-circle" src="<%= image_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">
+      <img class="rounded-circle" src="<%= asset_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">
        <h2>商品・投稿の一覧</h2>
        <p>会員の方が投稿された投稿を見る</p>
        <p><%= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>
     </div>
     <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= image_path('plus.png') %> alt="商品の閲覧" width="140" height="140">
+     <img class="rounded-circle" src=<%= asset_path('plus.png') %> alt="商品の閲覧" width="140" height="140">
        <h2>防災グッズの投稿</h2>
        <p>防災グッズを実際に投稿する</p>
        <p><%= link_to "クリック", new_post_path, class: "btn btn-primary my-2" %>
     </div>
     <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= image_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">
+     <img class="rounded-circle" src=<%= asset_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">
        <h2>防災グッズの検索</h2>
        <p>投稿された防災グッズを検索する</p>
        <p><%= link_to "クリック", search_path, class: "btn btn-primary my-2" %>
     </div>
     <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= image_path('people.png') %> alt="商品の閲覧" width="140" height="140">
+     <img class="rounded-circle" src=<%= asset_path('people.png') %> alt="商品の閲覧" width="140" height="140">
        <h2>マイページ</h2>
        <p>投稿の一覧や、いいねした投稿の一覧を見る</p>
        <p><%= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>
     </div>
     <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= image_path('tag.png') %> alt="商品の閲覧" width="140" height="140">
+     <img class="rounded-circle" src=<%= asset_path('tag.png') %> alt="商品の閲覧" width="140" height="140">
        <h2>タグ一覧</h2>
        <p>現在使用できるタグの一覧を見る</p>
        <p><%= link_to "クリック", tags_path, class: "btn btn-primary my-2" %>
     </div>
     <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= image_path('fav.png') %> alt="商品の閲覧" width="140" height="140">
+     <img class="rounded-circle" src=<%= asset_path('fav.png') %> alt="商品の閲覧" width="140" height="140">
        <h2>いいね一覧</h2>
        <p>いいねをした投稿の一覧を見る</p>
        <p><%= link_to "クリック", user_favorites_path(current_user), class: "btn btn-primary my-2" %>

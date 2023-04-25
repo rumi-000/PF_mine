@@ -11,18 +11,19 @@ class User < ApplicationRecord
  has_many :post_comments, dependent: :destroy
  has_many :chats, dependent: :destroy
  
-# 退会機能：退会していない会員を定義
- def active_for_authentication?
-  super && (is_deleted == false)
- end
- 
+
  # ゲストログイン機能：ログインに必要な情報を渡す
  def self.guest
   find_or_create_by!(email: 'guest@example.com') do |user|
    user.password = SecureRandom.urlsafe_base64
    user.password_confirmation = user.password
    user.name = "ゲストユーザー"
+   user.is_deleted = false
   end
  end
   
+  # 退会機能：退会していない会員を定義
+ def active_for_authentication?
+  super && (is_deleted == false)
+ end
 end

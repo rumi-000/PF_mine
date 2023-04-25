@@ -32,8 +32,15 @@
        <p>投稿の一覧や、いいねした投稿の一覧を見る</p>
        <p><%= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>
     </div>
+    <div class="col-lg-4">
+     <img class="rounded-circle" src=<%= image_path('tag.png') %> alt="商品の閲覧" width="140" height="140">
+       <h2>タグ一覧</h2>
+       <p>現在使用できるタグの一覧を見る</p>
+       <p><%= link_to "クリック", tags_path, class: "btn btn-primary my-2" %>
+    </div>
 
    </div>
    </div>
     </div>
   </section>
+  

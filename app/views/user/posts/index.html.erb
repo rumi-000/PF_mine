@@ -15,8 +15,11 @@
    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">新規投稿は<%= link_to "こちら" , new_post_path %>をクリック</h4>
   </div>
 
+ <% if current_user.present? %>
   <div class="col-auto">
    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">いいねをした投稿は<%= link_to "こちら" , user_favorites_path(current_user) %>をクリック</h4>
+  </div>
+ <% end %>
  </div>
  
 <!--一覧フォーム-->

@@ -20,6 +20,6 @@
   </div>
   <div class = "row-6 text-left" style ="height:40px;">
    <% post.tags.each do |tag| %>
-    <p><%= link_to tag.name, tags_path %></p>
+    <%= link_to tag.name, tags_path, style: "display: inline-block; margin-right: 10px;" %>
    <% end %>
   </div>

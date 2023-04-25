@@ -16,27 +16,31 @@
    
   <!--メイン-->
   <main>
+     <main style="padding-bottom: 50px">
    <%= yield %>
   </main>
   
-  <!--フッターー-->
-  　<% if user_signed_in? %>
-　　 <footer class="fixed-bottom" style="background-color: #9AB2FA;">
-　　<% elsif admin_signed_in? %>
-　　 <footer class="fixed-bottom" style="background-color: #393939;">
-　　<% else %>
-　　 <footer class="fixed-bottom"style="background-color: #B0E683;">
-　　<% end %>
-    <div class="container">
-     <div class="row no-gutters">
-      <div class="col-md-4"></div>
-     </div>
-    </div>
-    </footer>
-  </body>
-</html>
+ 
 
 <!--勉強-->
 <!--ハンバーガメニューの参考サイト：https://www.manajob.jp/bootstrap/bootstrap/bootstrap-navigation-->
 
-
+  <% if user_signed_in? %>
+　<footer class="pt-3" style="background-color: #9AB2FA; height:100px;">
+　<% elsif admin_signed_in? %>
+　<footer class="pt-3" style="background-color: #393939; height:100px;">
+　<% else %>
+　<footer class="pt-3" style="background-color: #B0E683; height:100px;">
+　<% end %>
+  <div class="container">
+    <p class="float-right">
+     <i class="fab fa-twitter ml-2" style="font-size:2em; color: #ffffff;"></i>
+     <i class="fab fa-instagram ml-2" style="font-size:2em; color: #ffffff;"></i>
+     <i class="fab fa-line ml-2" style="font-size:2em; color: #ffffff;"></i>
+     <i class="fab fa-facebook-square ml-2" style="font-size:2em; color: #ffffff;"></i>
+    </p>
+    <p>@PF_minw 2023-04-25</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "admin" => "admin/homes#top", as: "admin"
   get "search" => "user/searches", as: "search"
   get "admin/search" => "admin/users#search", as: "admin/search"
-  
+  get 'user/:user_id/favorites' => "user/favorites#index", as: 'user_favorites'
   post "/" => "user/homes#top"
   
   #管理者側 カリキュラム通りに記載している。
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   end
   
  resources :posts, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
-  resource :favorites, only: [:create, :destroy]
+  resource :favorites, only: [:create, :destroy, :index]
  resources :post_comments, only: [:create, :destroy]
  end
  

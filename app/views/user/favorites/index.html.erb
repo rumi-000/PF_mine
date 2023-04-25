@@ -1,40 +1,32 @@
 <!--<div class="container-fluid" style="height:900px;">-->
 
 <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
-  <h2 class="m-0">投稿一覧</h2>
+  <h2 class="m-0">いいね投稿一覧</h2>
 </div>
  
  <!--メッセージ-->
  <div class="row justify-content-md-center mt-2">
-  
-  <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">検索機能は<%= link_to "こちら" , search_path %>をクリック</h4>
-  </div>
-  
-  <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">新規投稿は<%= link_to "こちら" , new_post_path %>をクリック</h4>
-  </div>
-
-  <div class="col-auto">
-   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;">いいねをした投稿は<%= link_to "こちら" , user_favorites_path(current_user) %>をクリック</h4>
+   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "マイページへ戻る" , user_path(@user) %></h4>
  </div>
- 
+
+
+
 <!--一覧フォーム-->
  <div class="jumbotron text-center my-4" style="background-color: #d1e5d4; margin: 0 auto; padding: 5px; border-radius: 30px; width: 95%";>
 <!--投稿が一件もないとき-->
 　<!--投稿メッセージ-->
- <% if @posts.empty? %>
+ <% if @favorite_posts.empty? %>
   <div class="row ml-5" style="height: 400px;">
    <h5><%= @message %></h5>
   <!--新規投稿リンク-->
-  <br><h5><%= link_to "投稿する" , new_post_path %></h5>
+  <br><h5><%= link_to "投稿を探す" , posts_path %></h5>
   </div>
   
 <% else %>
 <!--投稿があるとき-->
 <div class="row">
  <!--投稿のカード-->
-  <% @posts.each do |post| %>
+  <% @favorite_posts.each do |post| %>
    <tr>
    <div class="col-md-6 ">
     <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #F1F8E1; border-radius: 30px;">
@@ -57,7 +49,7 @@
    <% end %>
    
    <div class ="row offset-9">
-    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+    <%#= paginate @posts, theme: 'twitter-bootstrap-4' %>
    </div>
   </div>
  

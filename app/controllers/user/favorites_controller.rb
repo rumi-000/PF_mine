@@ -16,6 +16,14 @@ class User::FavoritesController < ApplicationController
    redirect_to post_path(post)
  end
 
+ def index
+   @user = User.find(params[:user_id])
+   #mapを使用することで、簡単に格納ができるとのこと
+   @favorite_posts = @user.favorites.map(&:post)
+   @message = "いいねした機能はありません。" if  @favorite_posts.empty?
+ end
+
+
 end
 
 

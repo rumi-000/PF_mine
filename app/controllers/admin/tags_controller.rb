@@ -16,13 +16,13 @@ class Admin::TagsController < ApplicationController
     end
   end
   
-　#タグの一覧
+ #タグの一覧
   def index
   @tags = Tag.all
   @tag = Tag.new
   end
 
- # タグの削除
+ #タグの削除
   def destroy
    @tag = Tag.find(params[:id])
     if @tag.destroy
@@ -34,7 +34,7 @@ class Admin::TagsController < ApplicationController
     end
   end
  
-　#タグの編集画面
+ #タグの編集画面
   def edit
    @tag = Tag.find(params[:id])
   end

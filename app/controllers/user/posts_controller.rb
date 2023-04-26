@@ -19,7 +19,8 @@ before_action :authenticate_user!, only: [:new,:create,]
    render :new
   end
  end
-  
+ 
+
  def show
   @post = Post.find(params[:id])
   #コメント機能の記述
@@ -85,12 +86,3 @@ def authenticate_user_or_admin!
 end
 
 end
-
-
-
-
-
-
-
-
-

@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   # バリデーション
   validates :item_name, presence: true
   validates :item_description, presence: true
+  validates :tags, presence: true
 
   # 画像の設定
   has_one_attached :image

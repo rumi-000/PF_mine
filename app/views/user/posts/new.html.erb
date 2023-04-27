@@ -35,7 +35,9 @@
        <%= f.label:name , 'タグ' %>
        <% @tag.each do |tag| %>
    <br>
-        <%= check_box_tag 'post[tag_ids][]', tag.id, false, id: "tag_#{tag.id}" %>
+        <%= f.check_box 'tag_ids', {multiple: true}, tag.id, nil %>
+        <%#= f.check_box :tag_ids, { multiple: true, checked: tag.id, disabled: tag[:disabled] }, tag[:id] %>
+        <%#= check_box :post, :tag_ids, {class: "check_box"}, tag.id, false %>
         <%= label_tag "tag_#{tag.id}", tag.name %>
        <% end %>
   </div>

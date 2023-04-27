@@ -6,14 +6,32 @@ before_action :authenticate_user!, only: [:new,:create,]
   @tag = Tag.all
  end
  
+ # def create
+ #  # byebug
+ #  @post = Post.new(post_params)
+ #  @post.user_id = current_user.id
+ #  if @post.save
+ #    params[:post][:tag_ids].each do |tag|
+ #     @post.post_tags.create!(tag_id: tag)
+ #    end
+ #     redirect_to post_path(@post)
+ #  else
+ #   @tag = Tag.all
+ #   render :new
+ #  end
+ # end
+ 
  def create
+  if params[:post][:tag_ids] == nil
+    @tag = Tag.all
+    redirect_to new_post_path
+    return
+  end
   @post = Post.new(post_params)
   @post.user_id = current_user.id
+
   if @post.save
-    params[:post][:tag_ids].each do |tag|
-     @post.post_tags.create!(tag_id: tag)
-    end
-     redirect_to post_path(@post)
+    redirect_to post_path(@post)
   else
    @tag = Tag.all
    render :new
@@ -75,7 +93,7 @@ end
  private
 
  def post_params
-  params.require(:post).permit(:item_name, :item_description, :image)
+  params.require(:post).permit(:item_name, :item_description, :image, tag_ids: [])
  end
 
 def authenticate_user_or_admin!

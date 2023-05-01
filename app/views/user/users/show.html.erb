@@ -19,12 +19,12 @@
     <h4><%= @user.name %></h4>
   </div>
   <div class="row">
-    <h4 class="texr-left">ひとこと</h4>
+    <h4 class="texr-left">ひとこと:</h4>
      <% if @user.introduction.present? %>
       <p><%= @user.introduction %></p>
      <% else %>
       <%= link_to edit_user_path(@user.id) do %>
-       まだひとことがありません<br>編集してみましょう！
+       <p style="margin:20px;">まだひとことがありません<br>編集してみましょう！</p>
       <% end %>
      <% end %>
   </div>
@@ -39,7 +39,7 @@
        <%= link_to" ひとことを編集する", edit_user_path(@user.id)  %>
      <% end %>
    </div>
-   <div class = "row">
+   <div class = "row my-4">
     <%= link_to "いいねした投稿を見る", user_favorites_path(@user) %>
    </div>
    <div class = "row">

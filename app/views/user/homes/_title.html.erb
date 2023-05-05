@@ -1,0 +1,81 @@
+<!--タイトル-->
+<!--content_forメソッドも使用できるかも？-->
+
+<!--投稿一覧ページ-->
+<% if controller_name == 'posts' && action_name == 'index' %>
+  <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+    <h2 class="m-0">投稿一覧</h2>
+  </div>
+
+<!--新規投稿ページ-->
+<% elsif controller_name == 'posts' && action_name == 'new' %>
+  <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+    <h2 class="m-0">投稿</h2>
+  </div>
+  
+<!--投稿編集ページ-->  
+<% elsif controller_name == 'posts' && action_name == 'edit' %>
+  <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+    <h2 class="m-0">編集</h2>
+  </div>
+  
+<!--商品詳細ページ-->
+<% elsif controller_name == 'posts' && action_name == 'show' %>
+  <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+    <h2 class="m-0"><%= post.item_name %></h2>
+  </div>
+
+<!--タグ一覧ページ-->
+<% elsif controller_name == 'tags' && action_name == 'index' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">タグ一覧</h2>
+</div>
+
+<!--タグ詳細ページ-->
+<% elsif controller_name == 'tags' && action_name == 'show' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">タグ詳細</h2>
+</div>
+
+<!--タグ依頼ページ-->
+<% elsif controller_name == 'chats' && action_name == 'new' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">タグ依頼</h2>
+</div>
+
+<!--検索ページ-->
+<% elsif controller_name == 'searches' && action_name == 'search' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">検索</h2>
+</div>
+
+<!--いいねページ-->
+<% elsif controller_name == 'favorites' && action_name == 'index' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">いいね一覧</h2>
+</div>
+
+<!--マイページ-->
+<% elsif controller_name == 'users' && action_name == 'show' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">マイページ</h2>
+</div>
+
+<!--マイページ編集-->
+<% elsif controller_name == 'users' && action_name == 'edit' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">編集</h2>
+</div>
+
+<!--退会ページ-->
+<% elsif controller_name == 'users' && action_name == 'confirm_withdraw' %>
+<div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 30%;">
+  <h2 class="m-0">退会</h2>
+</div>
+
+
+
+<% else %>
+
+<% end %>
+

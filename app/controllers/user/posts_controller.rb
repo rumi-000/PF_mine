@@ -6,21 +6,6 @@ before_action :authenticate_user!, only: [:new,:create,]
   @tag = Tag.all
  end
  
- # def create
- #  # byebug
- #  @post = Post.new(post_params)
- #  @post.user_id = current_user.id
- #  if @post.save
- #    params[:post][:tag_ids].each do |tag|
- #     @post.post_tags.create!(tag_id: tag)
- #    end
- #     redirect_to post_path(@post)
- #  else
- #   @tag = Tag.all
- #   render :new
- #  end
- # end
- 
  def create
   if params[:post][:tag_ids] == nil
     @tag = Tag.all

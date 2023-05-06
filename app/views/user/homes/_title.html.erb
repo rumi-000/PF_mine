@@ -2,7 +2,13 @@
 <!--content_forメソッドも使用できるかも？-->
 
 <!--投稿一覧ページ-->
-<% if controller_name == 'posts' && action_name == 'index' %>
+<% if controller_name == 'homes' && action_name == 'choice' %>
+  <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
+    <h2 class="m-0">機能一覧</h2>
+  </div>
+  
+<!--投稿一覧ページ-->
+<% elsif  controller_name == 'posts' && action_name == 'index' %>
   <div class="jumbotron text-center mt-4" style="background-color: #BEECF7; margin: 0 auto; padding: 5px; border-radius: 30px; width: 20%;">
     <h2 class="m-0">投稿一覧</h2>
   </div>

@@ -9,7 +9,6 @@ before_action :authenticate_user!, only: [:new,:create,]
  def create
   if params[:post][:tag_ids] == nil
     @tag = Tag.all
-    flash[:notice] = "投稿が作成されました"
     redirect_to new_post_path
     return
   end
@@ -17,6 +16,7 @@ before_action :authenticate_user!, only: [:new,:create,]
   @post.user_id = current_user.id
 
   if @post.save
+   flash[:notice] = "投稿が作成されました."
     redirect_to post_path(@post)
   else
    @tag = Tag.all
@@ -42,7 +42,6 @@ before_action :authenticate_user!, only: [:new,:create,]
  def update
   @post = Post.find(params[:id])
   if @post.update(post_params)
-   flash[:notice] = "投稿が更新されました"
   redirect_to post_path(@post)
   else
   @posts = Post.all

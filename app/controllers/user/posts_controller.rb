@@ -42,6 +42,7 @@ before_action :authenticate_user!, only: [:new,:create,]
  def update
   @post = Post.find(params[:id])
   if @post.update(post_params)
+   flash[:notice] = "投稿は更新されました."
   redirect_to post_path(@post)
   else
   @posts = Post.all

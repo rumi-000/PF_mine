@@ -46,25 +46,11 @@
    <!--ユーザーの場合-->
   <% else %>
   
-   <!--いいねしていた場合-->
-   <% if @post.favorited_by?(current_user) %>
-    <div class = "col">
-    <%= link_to post_favorites_path(@post), method: :delete do %>♡<% end %>
-    </div>
-    
-   <!--いいねしていなかった場合-->
-   <% else %>
-    <div class = "col">
-    <p><%= link_to post_favorites_path(@post), method: :post do %>いいねをする<% end %>
-    </div>
-  <% end %>
+   <!--いいね機能の引き出し-->
+   <%= render 'user/favorites/btn', post: @post %>
    
   <% end %>
-  
-  <div class = "col">
-   いいね件数:<%= @post.favorites.count %> 件
-  </div>
-  
+ 
   </div>
  </div>
 

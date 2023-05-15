@@ -33,8 +33,6 @@ before_action :authenticate_user!, only: [:new,:create,]
   @user = @post.user
  end
  
-
-
  def edit
   @post = Post.find(params[:id])
  end

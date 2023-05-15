@@ -2,14 +2,18 @@
 
   <!--いいね済み-->
   <div id="favorite-button">
-   <%= link_to post_favorites_path(post), method: :delete, remote:true do %>いいねを外す<% end %>
+   <%= link_to post_favorites_path(post), method: :delete, remote:true do %>
+    <span>いいねを消す</span>
+   <% end %>
   </div>
  
 <% else %>
 
  <!--いいねしていないとき-->
  <div id="favorite-button">
-  <%= link_to post_favorites_path(post), method: :post, remote:true, class: "favorite-button"  do %>いいね<% end %>
+  <%= link_to post_favorites_path(post), method: :post, remote:true do %>
+   <span>いいねする</span>
+  <% end %>
  </div>
  
 <% end %>

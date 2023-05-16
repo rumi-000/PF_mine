@@ -20,3 +20,10 @@
 * 自身の生活環境の合わせて防災グッズを見つけたい時
 * 購入を検討している防災グッズの評判やコメントを見たい時
 * 防災の意識を高めたい時
+
+#### 開発環境
+* OS：Linux(CentOS)
+* 言語：HTML,CSS,JavaScript,Ruby,SQL
+* フレームワーク：Ruby on Rails
+* JSライブラリ：jQuery
+* IDE：Cloud9

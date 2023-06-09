@@ -1,0 +1,30 @@
+.title {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding: 0 80px;
+  margin-top: 20px;
+}
+
+.title:before, .title:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 2px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.title:before {
+  left: 0;
+}
+
+.title:after {
+  right: 0;
+}
+
+.card1 {
+  box-shadow: 0 10px 25px 0 rgba(60, 194, 235, 0.5);
+}

@@ -7,6 +7,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+<% if request.path == '/choice' %>
+  <%= stylesheet_link_tag 'choice', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
@@ -19,7 +24,6 @@
    <%= yield %>
   </main>
   
- 
 
 <!--勉強-->
 <!--ハンバーガメニューの参考サイト：https://www.manajob.jp/bootstrap/bootstrap/bootstrap-navigation-->

@@ -1,54 +1,163 @@
- <!--タイトル-->
 <%= render "user/homes/title" %>
 
-<section class="jumbotron text-center mx-6 my-3" style="background-color: #BEECF7;  width: 90%; margin: 0 auto; border-radius: 30px;">
+<div class="container">
+ 
+<div class="row justify-content-center">
+ <h4 class="title"><%= current_user.name %>さん
+  <br>こんにちは<i class="far fa-smile"></i></h4>
+</div>
 
- <div class="container">
+ 
+<div class="container">
+  <div class="row justify-content-md-center">
    
-  <h4 class="jumbotron-heading pb-3">こんにちは！</h4>
+   <div class="col-md-4 my-2">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src="<%= asset_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">商品・投稿の一覧</h3>
+        <p class="card-text">会員の方が投稿された投稿を見る</p>
+        <p class="card-link">
+          <%= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>
+        </p>
+     </div>
+    </div>
+   </div>
+  
+   <div class="col-md-4 my-2">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src=<%= asset_path('plus.png') %> alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">防災グッズの投稿</h3>
+        <p class="card-text">防災グッズを実際に投稿する</p>
+        <p class="card-link">
+         <%= link_to "クリック", new_post_path, class: "btn btn-primary my-2" %>
+        </p>
+     </div>
+    </div>
+   </div>
+    
+   <div class="col-md-4 my-2">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src=<%= asset_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">防災グッズの検索</h3>
+        <p class="card-text">投稿された防災グッズを検索する</p>
+        <p class="card-link">
+         <%= link_to "クリック", search_path, class: "btn btn-primary my-2" %>
+        </p>
+     </div>
+    </div>
+   </div>
+  </div> 
+  
+<hr class="featurette-divider my-3">
 
-   <div class="row justify-content-md-center">
-     
-    <div class="row pb-2">
-     
-     <div class="col-lg-4">
-      <img class="rounded-circle" src="<%= asset_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">
-       <h2>商品・投稿の一覧</h2>
-       <p>会員の方が投稿された投稿を見る</p>
-       <p><%= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>
-    </div>
-    <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= asset_path('plus.png') %> alt="商品の閲覧" width="140" height="140">
-       <h2>防災グッズの投稿</h2>
-       <p>防災グッズを実際に投稿する</p>
-       <p><%= link_to "クリック", new_post_path, class: "btn btn-primary my-2" %>
-    </div>
-    <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= asset_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">
-       <h2>防災グッズの検索</h2>
-       <p>投稿された防災グッズを検索する</p>
-       <p><%= link_to "クリック", search_path, class: "btn btn-primary my-2" %>
-    </div>
-    <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= asset_path('people.png') %> alt="商品の閲覧" width="140" height="140">
-       <h2>マイページ</h2>
-       <p>投稿の一覧や、いいねした投稿の一覧を見る</p>
-       <p><%= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>
-    </div>
-    <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= asset_path('tag.png') %> alt="商品の閲覧" width="140" height="140">
-       <h2>タグ一覧</h2>
-       <p>現在使用できるタグの一覧を見る</p>
-       <p><%= link_to "クリック", tags_path, class: "btn btn-primary my-2" %>
-    </div>
-    <div class="col-lg-4">
-     <img class="rounded-circle" src=<%= asset_path('fav.png') %> alt="商品の閲覧" width="140" height="140">
-       <h2>いいね一覧</h2>
-       <p>いいねをした投稿の一覧を見る</p>
-       <p><%= link_to "クリック", user_favorites_path(current_user), class: "btn btn-primary my-2" %>
+  <div class="row justify-content-md-center">
+   
+   <div class="col-md-4 my-2 h-200">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src=<%= asset_path('people.png') %> alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">マイページ</h3>
+        <p class="card-text">投稿の一覧や<br>いいねした投稿の一覧を見る</p>
+        <p class="card-link">
+         <%= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>
+        </p>
+     </div>
     </div>
    </div>
-   </div>
+
+   <div class="col-md-4 my-2">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src=<%= asset_path('tag.png') %> alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">タグ一覧</h3>
+        <p class="card-text">現在使用できるタグの<br>一覧や詳細を見る</p>
+        <p class="card-link">
+         <%= link_to "クリック", tags_path, class: "btn btn-primary my-2" %>
+        </p>
+     </div>
     </div>
-  </section>
+   </div>
+
+   <div class="col-md-4 my-2">
+    <div class="card text-center card1" style="height: 400PX;">
+     <div class="card-body">
+      <img class="img-fluid" style="height: 150PX;" src=<%= asset_path('fav.png') %> alt="商品の閲覧" width="140" height="140">
+      <hr class="featurette-divider my-3">
+       <h3 class="card-title">いいね一覧</h3>
+        <p class="card-text">いいねをした投稿の一覧を見る</p>
+        <p class="card-link">
+         <%= link_to "クリック", user_favorites_path(current_user), class: "btn btn-primary my-2" %>
+        </p>
+     </div>
+    </div>
+   </div>
+   
+  </div>
+ </div>
+ 
+ </div>
+
+
+<!--以下訂正厳禁-->
+   <!--タイトル-->
+<!--<%#= render "user/homes/title" %>-->
+
+<!--<section class="jumbotron text-center mx-6 my-3" style="background-color: #BEECF7;  width: 90%; margin: 0 auto; border-radius: 30px;">-->
+
+<!-- <div class="container">-->
+   
+<!--  <h4 class="jumbotron-heading pb-3">こんにちは！</h4>-->
+
+<!--   <div class="row justify-content-md-center">-->
+     
+<!--    <div class="row pb-2">-->
+     
+<!--     <div class="col-lg-4">-->
+<!--      <img class="rounded-circle" src="<%#= asset_path('goods.png') %>"  alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>商品・投稿の一覧</h2>-->
+<!--       <p>会員の方が投稿された投稿を見る</p>-->
+<!--       <p><%#= link_to "クリック", posts_path, class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4">-->
+<!--     <img class="rounded-circle" src=<%#= asset_path('plus.png') %> alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>防災グッズの投稿</h2>-->
+<!--       <p>防災グッズを実際に投稿する</p>-->
+<!--       <p><%#= link_to "クリック", new_post_path, class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4">-->
+<!--     <img class="rounded-circle" src=<%#= asset_path('mushi.png') %> alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>防災グッズの検索</h2>-->
+<!--       <p>投稿された防災グッズを検索する</p>-->
+<!--       <p><%#= link_to "クリック", search_path, class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4">-->
+<!--     <img class="rounded-circle" src=<#%= asset_path('people.png') %> alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>マイページ</h2>-->
+<!--       <p>投稿の一覧や、いいねした投稿の一覧を見る</p>-->
+<!--       <p><%#= link_to "クリック", user_path(current_user.id), class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4">-->
+<!--     <img class="rounded-circle" src=<%#= asset_path('tag.png') %> alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>タグ一覧</h2>-->
+<!--       <p>現在使用できるタグの一覧を見る</p>-->
+<!--       <p><#%= link_to "クリック", tags_path, class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4">-->
+<!--     <img class="rounded-circle" src=<%#= asset_path('fav.png') %> alt="商品の閲覧" width="140" height="140">-->
+<!--       <h2>いいね一覧</h2>-->
+<!--       <p>いいねをした投稿の一覧を見る</p>-->
+<!--       <p><%#= link_to "クリック", user_favorites_path(current_user), class: "btn btn-primary my-2" %>-->
+<!--    </div>-->
+<!--   </div>-->
+<!--   </div>-->
+<!--    </div>-->
+<!--  </section>-->
   

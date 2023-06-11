@@ -4,14 +4,14 @@
   margin: 20.0px;
 }
 
-.user:after {
-  position: absolute;
-  content: " ";
-  display: block;
-  border-bottom: solid 3px #5472cd;
-  bottom: -3px;
-  width: 20%;
-}
+/*.user:after {*/
+/*  position: absolute;*/
+/*  content: " ";*/
+/*  display: block;*/
+/*  border-bottom: solid 3px #5472cd;*/
+/*  bottom: -3px;*/
+/*  width: 50%;*/
+/*}*/
 
 .card {
   width: 350px;

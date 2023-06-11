@@ -8,9 +8,15 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
-<% if request.path == '/choice' %>
-  <%= stylesheet_link_tag 'choice', media: 'all', 'data-turbolinks-track': 'reload' %>
-<% end %>
+  <!--(ユーザー側機能一覧画面のcss)-->
+  <% if request.path == '/choice' %>
+   <%= stylesheet_link_tag 'choice', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %>
+
+  <!--(ユーザー側マイページ)-->
+  <% if request.path.starts_with?('/users') %>
+     <%= stylesheet_link_tag 'user/shows', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>

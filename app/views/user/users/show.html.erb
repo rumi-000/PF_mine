@@ -1,106 +1,198 @@
- <!--タイトル-->
+<!--タイトル-->
 <%= render "user/homes/title" %>
 
- <!--メッセージ-->
- <div class="row justify-content-md-center mt-2">
-   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "戻る", :back %></h4>
-  </div>
 
- <!--プロフィール情報-->
- <section class="jumbotron text-center mx-6 my-3" style="background-color: #d1e5d4;  width: 90%; margin: 0 auto; padding: 20px; border-radius: 30px;">
-  <div class="container">
-  
-  <h4 class="jumbotron-heading pb-3"><%= @user.name %>さんのプロフィール</h4>
+<div class="row justify-content-center mt-5">
+  <div class="d-flex flex-column align-items-center">
+    <!-- 名前 -->
+    <h4 class="user"><%= @user.name %></h4>
 
-<div class="col-5">
-  <div class="row">
-    <h4 class="text-left">名前：</h4>
-    <h4><%= @user.name %></h4>
-  </div>
-  <div class="row">
-    <h4 class="texr-left">ひとこと:</h4>
-     <% if @user.introduction.present? %>
-      <p><%= @user.introduction %></p>
-     <% else %>
+    <!-- 自己紹介文 -->
+    <% if @user.introduction.present? %>
+      <p class="user"><%= @user.introduction %></p>
+    <% else %>
       <%= link_to edit_user_path(@user.id) do %>
-       <p style="margin:20px;">まだひとことがありません<br>編集してみましょう！</p>
+        <p class="user">まだひとことがありません<br>編集してみましょう！</p>
       <% end %>
-     <% end %>
+    <% end %>
+
+    <!-- いいねした投稿 -->
+    <h5 class="user"><%= link_to "いいねした投稿を見る", user_favorites_path(@user) %></h5>
+
+    <!-- 退会 -->
+    <h5 class="user"><%= link_to "退会する", confirm_withdraw_users_path(@user.id) %></h5>
   </div>
 </div>
-   
- <div class="col-5">
-  
-   <div class = "row">
-    <% if @user == current_user %>
-    
-     <% if @user.introduction.present? %>
-       <%= link_to" ひとことを編集する", edit_user_path(@user.id)  %>
-     <% end %>
-   </div>
-   <div class = "row my-4">
-    <%= link_to "いいねした投稿を見る", user_favorites_path(@user) %>
-   </div>
-   <div class = "row">
-    <div class ="link-danger"><%= link_to "退会する", confirm_withdraw_users_path(@user.id) %></div>
+
+<div class="row justify-content-center my-5">
+  <h4><%= @user.name %>さんの投稿一覧</h4>
+</div>
+
+<div class="row justify-content-center mt-2">
+  <% if @post.present? %>
+    <% @post.each do |post| %>
+      <section class="card">
+        <div class="card-content">
+          <h1 class="card-title"><%= link_to post.item_name, post_path(post.id)%></h1>
+          <p class="card-text"><%= post.item_description %></p>
+          <hr class="featurette-divider my-3">
+          <h5 class="tag">タグ情報</h5>
+          <strong class="d-inline-block mb-2 text-primary">
+            <% post.tags.each do |tag| %>
+              <%= link_to tag.name, tags_path, style: "display: inline-block; margin-right: 10px;" %>
+            <% end %>
+          </strong>
+          <hr class="featurette-divider my-3">
+          <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
+          <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
+          <% if current_admin.present? %>
+            <div class="card-text small">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
+          <% else %>
+            <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
+          <% end %>
+        </div>
+      </section>
     <% end %>
-   </div>
- </div>
+
+    <div class="row offset-9">
+      <%= paginate @post, theme: 'twitter-bootstrap-4' %>
+    </div>
+
+  <% else %>
+
+    <div class="row justify-content-center my-5">
+      <h4>まだ投稿がありません</h4>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="row justify-content-center mt-2">
+  <% if current_admin.present? %>
+    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
+  <% else %>
+    <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
+  <% end %>
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!--タイトル-->
+<!--<#%= render "user/homes/title" %>-->
+
+ <!--メッセージ-->
+<!-- <div class="row justify-content-md-center mt-2">-->
+<!--   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%#= link_to "戻る", :back %></h4>-->
+<!--  </div>-->
+
+ <!--プロフィール情報-->
+<!-- <section class="jumbotron text-center mx-6 my-3" style="background-color: #d1e5d4;  width: 90%; margin: 0 auto; padding: 20px; border-radius: 30px;">-->
+<!--  <div class="container">-->
+<!--  <h4 class="title"><%#= current_user.name %>さんのプロフィール</h4>-->
+
+<!--<div class="col-5">-->
+<!--  <div class="row">-->
+<!--    <h4 class="text-left">名前：</h4>-->
+<!--    <h4><#%= @user.name %></h4>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <h4 class="texr-left">ひとこと:</h4>-->
+<!--     <%# if @user.introduction.present? %>-->
+<!--      <p><%#= @user.introduction %></p>-->
+<!--     <%# else %>-->
+<!--      <%#= link_to edit_user_path(@user.id) do %>-->
+<!--       <p style="margin:20px;">まだひとことがありません<br>編集してみましょう！</p>-->
+<!--      <%# end %>-->
+<!--     <%# end %>-->
+<!--  </div>-->
+<!--</div>-->
+   
+<!-- <div class="col-5">-->
+  
+<!--   <div class = "row">-->
+<!--    <%# if @user == current_user %>-->
+    
+<!--     <%# if @user.introduction.present? %>-->
+<!--       <#= link_to" ひとことを編集する", edit_user_path(@user.id)  %>-->
+<!--     <%# end %>-->
+<!--   </div>-->
+<!--   <div class = "row my-4">-->
+<!--    <%#= link_to "いいねした投稿を見る", user_favorites_path(@user) %>-->
+<!--   </div>-->
+<!--   <div class = "row">-->
+<!--    <div class ="link-danger"><%#= link_to "退会する", confirm_withdraw_users_path(@user.id) %></div>-->
+<!--    <%# end %>-->
+<!--   </div>-->
+<!-- </div>-->
   
 
-  <h4 class="my-3"><%= @user.name %>さんの投稿一覧</h4>
- <% if @post.present? %>
- <div class="row mt-5">
-  <% @post.each do |post| %>
-   <tr>
-    <div class="col-md-6 ">
-    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #F1F8E1; border-radius: 30px;">
-     <div class="card-body d-flex flex-column align-items-start">
-      <strong class="d-inline-block mb-2 text-primary"><% post.tags.each do |tag| %><%= link_to tag.name, tags_path, style: "display: inline-block; margin-right: 10px;" %><% end %></strong>
-       <h5 class="card-title">商品名：<%= link_to post.item_name, post_path(post.id)%></h5>
-       <p class="card-text text">商品説明<br><%= post.item_description %></p>
-       <p class="card-text small">いいね件数:<%= post.favorites.count %>件</p>
-       <p class="card-text small">コメント件数:<%= post.post_comments.count %>件</p>
+<!--  <h4 class="my-3"><%#= @user.name %>さんの投稿一覧</h4>-->
+<!-- <%# if @post.present? %>-->
+<!-- <div class="row mt-5">-->
+<!--  <%# @post.each do |post| %>-->
+<!--   <tr>-->
+<!--    <div class="col-md-6 ">-->
+<!--    <div class="card flex-md-row mb-4 shadow-sm h-md-250" style="background-color: #F1F8E1; border-radius: 30px;">-->
+<!--     <div class="card-body d-flex flex-column align-items-start">-->
+<!--      <strong class="d-inline-block mb-2 text-primary"><%# post.tags.each do |tag| %><%#= link_to tag.name, tags_path, style: "display: inline-block; margin-right: 10px;" %><%#end %></strong>-->
+<!--       <h5 class="card-title">商品名：<#%= link_to post.item_name, post_path(post.id)%></h5>-->
+<!--       <p class="card-text text">商品説明<br><%#= post.item_description %></p>-->
+<!--       <p class="card-text small">いいね件数:<%#= post.favorites.count %>件</p>-->
+<!--       <p class="card-text small">コメント件数:<%#= post.post_comments.count %>件</p>-->
        
-      <% if current_admin.present? %>
-       <div class="card-text small">投稿者：<%= link_to post.user.name, admin_user_path(post.user_id) %></div>
-      <% else %>
-       <div class="card-text small">投稿者：<%= link_to post.user.name, user_path(post.user_id) %></div>
-      <% end %>
-     </div>
-   </div>
-   </div>
-   </tr>
+<!--      <%#if current_admin.present? %>-->
+<!--       <div class="card-text small">投稿者：<%#= link_to post.user.name, admin_user_path(post.user_id) %></div>-->
+<!--      <%# else %>-->
+<!--       <div class="card-text small">投稿者：<%#= link_to post.user.name, user_path(post.user_id) %></div>-->
+<!--      <#% end %>-->
+<!--     </div>-->
+<!--   </div>-->
+<!--   </div>-->
+<!--   </tr>-->
    
-  <% end %>
+<!--  <%# end %>-->
   
-  </div>
+<!--  </div>-->
   
-  <div class ="row offset-9">
-   <%= paginate @post, theme: 'twitter-bootstrap-4' %>
-  </div>
+<!--  <div class ="row offset-9">-->
+<!--   <%#= paginate @post, theme: 'twitter-bootstrap-4' %>-->
+<!--  </div>-->
   
- <% else %>
- <div class="row m-3 mt-5">
-  <div class="col-5 text-left">
-   <h4>投稿がありません</h4>
-  </div>
-  <div class="col-6">
-   <%= link_to new_post_path(@user) do %>
-   <h4>新しく投稿する</h4>
-   <% end %>
-  </div>
- </div>
- <% end %>
- </div>
- </section>
+<!-- <%# else %>-->
+<!-- <div class="row m-3 mt-5">-->
+<!--  <div class="col-5 text-left">-->
+<!--   <h4>投稿がありません</h4>-->
+<!--  </div>-->
+<!--  <div class="col-6">-->
+<!--   <%#= link_to new_post_path(@user) do %>-->
+<!--   <h4>新しく投稿する</h4>-->
+<!--   <%# end %>-->
+<!--  </div>-->
+<!-- </div>-->
+<!-- <%# end %>-->
+<!-- </div>-->
+<!-- </section>-->
  
-  <div class="row my-2 offset-9">
-  <% if current_admin.present? %>
-   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%= link_to "管理人機能一覧へ", admin_path %></h4>
-  <% else %>
-  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%=link_to "機能一覧へ", choice_path %></h4>
-  <% end %>
- </div>
- 
- 
+<!--  <div class="row my-2 offset-9">-->
+<!--  <%# if current_admin.present? %>-->
+<!--   <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%#= link_to "管理人機能一覧へ", admin_path %></h4>-->
+<!--  <%# else %>-->
+<!--  <h4 style="padding: 1rem 1rem; border-bottom: 5px solid #BEECF7;"><%#=link_to "機能一覧へ", choice_path %></h4>-->
+<!--  <%# end %>-->
+<!-- </div>-->

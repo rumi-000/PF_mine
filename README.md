@@ -27,3 +27,6 @@
 * フレームワーク：Ruby on Rails
 * JSライブラリ：jQuery
 * IDE：Cloud9
+
+#### ER図
+![ER図 drawio](https://github.com/rumi-000/PF_mine/assets/122579397/2819ec59-8664-4936-a7d2-8771fd984e72)
